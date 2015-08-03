@@ -22,6 +22,12 @@ describe('Game Factory', function() {
     expect(game.cardValue(card)).toEqual(2);
   });
 
+  it('10 has the correct points value', function() {
+    // D2
+    var card = game.deck[8]
+    expect(game.cardValue(card)).toEqual(10);
+  });
+
   it('a Jack has a value of 10', function() {
     // DJ
     var card = game.deck[9]

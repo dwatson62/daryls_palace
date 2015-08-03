@@ -5,8 +5,15 @@ blackjackGame.factory('playerFactory', function() {
   };
 
   Player.prototype.getCard = function(game) {
-    this.currentCards.push(game.dealOne());
+    var card = game.dealOne();
+    this.currentCards.push(card);
+    return card;
   };
+
+  Player.prototype.nextRound = function() {
+    this.currentCards = [];
+    return this.currentCards;
+  }
 
   return Player;
 

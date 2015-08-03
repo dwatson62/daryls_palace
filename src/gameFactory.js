@@ -25,6 +25,7 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.cardValue = function(card) {
+    if (card.substring(1) == '10') { return 10; }
     card = card.split('')[1];
     if (card == "J" || card == "Q" || card == "K") { return 10; }
     if (card == "A") { return 11; }
