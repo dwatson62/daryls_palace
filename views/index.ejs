@@ -1,0 +1,28 @@
+<html ng-app="blackjack">
+<head>
+  <title>Blackjack</title>
+  <script src="bower_components/angular/angular.js"></script>
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="src/app.js"></script>
+  <script src="src/blackjackController.js"></script>
+  <script src="src/gameFactory.js"></script>
+  <script src="src/playerFactory.js"></script>
+</head>
+<body ng-controller="BlackjackController as bjctrl">
+  <br>
+  <div class="row">
+    <div class="col-md-4"><center><% include buttons %></center></div>
+    <div class="col-md-4">
+      <div id='dealer'>
+        <% include dealer %>
+      </div>
+      <br><br>
+      <div id='player'>
+        <% include player %>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</body>
+</html>

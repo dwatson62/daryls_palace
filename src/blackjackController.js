@@ -20,7 +20,8 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.hit = function() {
-    self.playerCards.push( { 'card': player.getCard(game) } );
+    var card = player.getCard(game);
+    self.playerCards.push( { 'card': card, 'src': '/images/cards/' + card + '.png' } );
     self.calculatePlayerScore();
   };
 
@@ -45,7 +46,8 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.dealerHit = function() {
-    self.dealerCards.push( { 'card': dealer.getCard(game) } );
+    var card = dealer.getCard(game);
+    self.dealerCards.push( { 'card': card, 'src': '/images/cards/' + card + '.png' } );
     self.calculateDealerScore();
   };
 
@@ -59,6 +61,6 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     else if ( self.dealerScore === 'Bust') { self.result = 'Player wins'; }
     else if ( self.dealerScore > self.playerScore) { self.result = 'Dealer wins'; }
     else if ( self.dealerScore < self.playerScore) { self.result = 'Player wins'; }
-  }
+  };
 
 }]);

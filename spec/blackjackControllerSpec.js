@@ -17,6 +17,13 @@ describe('Blackjack Controller', function() {
     expect(ctrl.playerCards.length).toEqual(1);
   });
 
+  it('player can stand, to find out the result', function() {
+    ctrl.startRound();
+    ctrl.hit();
+    ctrl.stand();
+    expect(ctrl.result).toBeDefined();
+  });
+
   it('can start a new round', function() {
     ctrl.hit();
     ctrl.nextRound();

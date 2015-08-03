@@ -1,0 +1,13 @@
+#dealer {
+  border: solid black;
+  background-color: green;
+  height: 150px;
+  width: 600px;
+}
+
+#player {
+  border: solid black;
+  background-color: green;
+  height: 150px;
+  width: 600px;
+}
