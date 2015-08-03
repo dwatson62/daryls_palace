@@ -19,6 +19,17 @@ blackjackGame.factory('gameFactory', function() {
     for (x in faces) { this.deck.push(suit + faces[x]); }
   };
 
+  Game.prototype.dealOne = function() {
+    x = Math.floor(Math.random() * 52);
+    return this.deck[x];
+  };
+
+  Game.prototype.cardValue = function(card) {
+    card = card.split('')[1];
+    if (card == "J" || card == "Q" || card == "K") { return 10; }
+    return parseInt(card);
+  };
+
   return Game;
 
 });
