@@ -27,7 +27,23 @@ blackjackGame.factory('gameFactory', function() {
   Game.prototype.cardValue = function(card) {
     card = card.split('')[1];
     if (card == "J" || card == "Q" || card == "K") { return 10; }
+    if (card == "A") { return 11; }
     return parseInt(card);
+  };
+
+  Game.prototype.pointsTotal = function(cards) {
+    var total = 0;
+    var aceCount = 0;
+    for (x in cards) {
+      if (this.cardValue(cards[x]) == 11) { aceCount += 1; }
+      total += this.cardValue(cards[x]);
+    }
+    if (total > 21 && aceCount > 0) {
+      total -= 10;
+      aceCount -= 1;
+    }
+    if (total > 21 && aceCount == 0) { return 'Bust'; }
+    return total;
   };
 
   return Game;
