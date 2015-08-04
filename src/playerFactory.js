@@ -23,6 +23,12 @@ blackjackGame.factory('playerFactory', function() {
     this.currentBet += amount;
   };
 
+  Player.prototype.doubleDown = function(game) {
+    this.bet(this.currentBet);
+    var card = this.getCard(game);
+    return card;
+  };
+
   return Player;
 
 });

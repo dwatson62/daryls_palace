@@ -51,4 +51,8 @@ describe('Player Factory', function() {
     expect(player.balance).toEqual(125);
   });
 
+  xit('can double down', function() {
+
+  });
+
 });

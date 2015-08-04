@@ -34,14 +34,13 @@ body {
   color: white;
 }
 
-#balance-display {
-  padding-top: 10px;
-  border: solid black;
+.scores {
+  text-align: center;
+  margin-left: 50px;
+  padding-top: 12px;
   background-color: #00A300;
-  height: 50px;
-  width: 200px;
-}
-
-#dealer-score {
-
+  height: 135px;
+  width: 140px;
+  color: white;
+  font-size: 64px;
 }

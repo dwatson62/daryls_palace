@@ -6,7 +6,9 @@ describe('Blackjack Controller', function() {
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('BlackjackController');
-    ctrl.startRound();
+    // return D6
+    spyOn(Math, 'random').and.returnValue(0.09);
+    ctrl.startRound(10);
   }));
 
   it('is defined', function() {
@@ -24,6 +26,13 @@ describe('Blackjack Controller', function() {
 
   it('can start a new round', function() {
     expect(ctrl.playerCards.length).toEqual(2);
+  });
+
+  xit('player can win with a higher score than the dealer', function() {
+    ctrl.hit();
+    spyOn(Math, 'random').and.returnValue(0.08);
+    ctrl.stand();
+    expect()
   });
 
 });

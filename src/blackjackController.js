@@ -14,10 +14,19 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.dealerScore;
   self.dealerTurn = false;
 
-  self.isGameStarted = false;
+  self.playerTurn = false;
   self.result;
 
   self.startRound = function(amount) {
+    self.clearPreviousRound();
+    self.playerTurn = true;
+    self.bet(amount);
+    self.dealerHit();
+    self.hit();
+    self.hit();
+  };
+
+  self.clearPreviousRound = function() {
     self.dealerTurn = false;
     self.blackjackResult = null;
     self.playerCards = [];
@@ -27,12 +36,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.dealerScore = null;
     dealer.nextRound();
     self.result = null;
-    self.isGameStarted = true;
-    self.bet(amount);
-    self.dealerHit();
-    self.hit();
-    self.hit();
-  };
+  }
 
   self.bet = function(amount) {
     player.bet(amount);
@@ -45,14 +49,23 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.calculatePlayerScore();
     if (self.playerScore == 21 && self.playerCards.length == 2) {
       self.blackjacks();
+      self.playerTurn = false;
     }
-    if (self.playerScore == 21) { self.stand(); }
+    else if (self.playerScore == 21) { self.stand(); }
   };
 
   self.stand = function() {
     // next player turn
-    self.isGameStarted = false;
+    self.playerTurn = false;
     self.dealersTurn();
+  };
+
+  self.doubleDown = function() {
+    var card = player.doubleDown(game);
+    self.playerCards.push( { 'card': card, 'src': '/images/cards/' + card + '.png' } );
+    self.calculatePlayerScore();
+    self.playerBalance = '£' + player.balance;
+    self.stand();
   };
 
   self.calculatePlayerScore = function() {
@@ -64,6 +77,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.blackjackResult = 'Blackjack!';
     game.blackjack(player);
     self.playerBalance = '£' + player.balance;
+    self.result = 'Player wins £' + game.winnings(player);
   };
 
   self.dealersTurn = function() {
@@ -94,7 +108,9 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     else if (self.playerScore > self.dealerScore || (self.dealerScore === 'Bust' && self.playerScore != 'Bust')) {
         self.playerWins();
       }
-    else { self.result = 'You lose'; }
+    else {
+      self.result = 'You lose';
+    }
   };
 
   self.isADraw = function() {
@@ -103,9 +119,9 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.playerWins = function() {
-    self.result = 'Player wins';
     game.winnings(player);
     self.playerBalance = '£' + player.balance;
+    self.result = 'Player wins £' + game.winnings(player);
   };
 
 }]);
