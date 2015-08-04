@@ -4,7 +4,8 @@
 <button class="bet-btns" id='bet10-btn' ng-click="bjctrl.startRound(20)" ng-hide="bjctrl.playerTurn">£20</button>
 <button class="player-btn" id='hit-btn' ng-click="bjctrl.hit()" ng-show="bjctrl.playerTurn">Hit me</button>
 <button class="player-btn" id='stand-btn' ng-click="bjctrl.stand()" ng-show="bjctrl.playerTurn">Stand</button>
-<button class="player-btn" id='stand-btn' ng-click="bjctrl.doubleDown()" ng-show="bjctrl.playerTurn">Double Down</button>
+<button class="player-btn" id='dbl-down-btn' ng-click="bjctrl.doubleDown()" ng-show="bjctrl.showDoubleDown()">Double Down</button>
+<button class="player-btn" id='split-btn' ng-click="" ng-show="bjctrl.showSplit()">Split</button>
 <div id='player-balance' ng-model="bjctrl.playerBalance"> {{bjctrl.playerBalance}} </div>
 <div id='result' ng-model="bjctrl.result"> {{bjctrl.result}} </div>
 <div id='player-winnings' ng-model="bjctrl.playerWinnings"> {{bjctrl.playerWinnings}} </div>

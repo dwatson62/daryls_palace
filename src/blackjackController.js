@@ -57,6 +57,16 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.dealersTurn();
   };
 
+  self.showDoubleDown = function() {
+    if (self.playerScore < 14 && self.playerTurn === true) { return true; }
+    return false;
+  };
+
+  self.showSplit = function() {
+    if (player.canSplit() === true && self.playerTurn === true) { return true; }
+    return false;
+  };
+
   self.doubleDown = function() {
     var card = player.doubleDown(game);
     self.playerCards.push( { 'card': card, 'src': '/images/cards/' + card + '.png' } );

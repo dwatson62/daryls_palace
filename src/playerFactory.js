@@ -29,6 +29,15 @@ blackjackGame.factory('playerFactory', function() {
     return card;
   };
 
+  Player.prototype.canSplit = function(game) {
+    if (this.currentCards.length === 2) {
+      if (this.currentCards[0].substring(1) === this.currentCards[1].substring(1)) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   return Player;
 
 });

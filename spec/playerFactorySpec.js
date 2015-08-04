@@ -55,4 +55,11 @@ describe('Player Factory', function() {
 
   });
 
+  it('can split when given duplicate card numbers', function() {
+    spyOn(Math, 'random').and.returnValue(0.09); // returns D6
+    player.getCard(game);
+    player.getCard(game);
+    expect(player.canSplit()).toEqual(true);
+  });
+
 });
