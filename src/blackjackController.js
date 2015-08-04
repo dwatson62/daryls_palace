@@ -8,6 +8,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.blackjackResult;
   self.playerCards = [];
   self.playerScore;
+  self.playerBalance = '£' + player.balance;
 
   self.dealerCards = [];
   self.dealerScore;
@@ -16,7 +17,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.isGameStarted = false;
   self.result;
 
-  self.startRound = function() {
+  self.startRound = function(amount) {
     self.dealerTurn = false;
     self.blackjackResult = null;
     self.playerCards = [];
@@ -27,9 +28,15 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     dealer.nextRound();
     self.result = null;
     self.isGameStarted = true;
+    self.bet(amount);
     self.dealerHit();
     self.hit();
     self.hit();
+  };
+
+  self.bet = function(amount) {
+    player.bet(amount);
+    self.playerBalance = '£' + player.balance;
   };
 
   self.hit = function() {
@@ -81,12 +88,22 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.determineWinner = function() {
-    if ( self.dealerScore === 'Bust' && self.playerScore === 'Bust') { self.result = 'You all lose'; }
-    else if ( self.dealerScore === self.playerScore) { self.result = 'Draw'; }
-    else if ( self.playerScore === 'Bust') { self.result = 'Dealer wins'; }
-    else if ( self.dealerScore === 'Bust') { self.result = 'Player wins'; }
-    else if ( self.dealerScore > self.playerScore) { self.result = 'Dealer wins'; }
-    else if ( self.dealerScore < self.playerScore) { self.result = 'Player wins'; }
+    if ( self.dealerScore === self.playerScore) { self.isADraw(); }
+    else if (self.playerScore > self.dealerScore || (self.dealerScore === 'Bust' && self.playerScore != 'Bust')) {
+        self.playerWins();
+      }
+    else { self.result = 'You lose'; }
+  };
+
+  self.isADraw = function() {
+    self.result = 'Draw';
+    game.draw(player);
+  };
+
+  self.playerWins = function() {
+    self.result = 'Player wins';
+    game.winnings(player);
+    self.playerBalance = '£' + player.balance;
   };
 
 }]);

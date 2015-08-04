@@ -19,4 +19,30 @@ describe('Player Factory', function() {
     expect(player.currentCards.length).toEqual(1);
   });
 
+  it('has a starting balance of 100', function() {
+    expect(player.balance).toEqual(100);
+  });
+
+  it('can place a bet', function() {
+    player.bet(10);
+    expect(player.currentBet).toEqual(10);
+  });
+
+  it('can place a bet and have it deducted from their balance', function() {
+    player.bet(10);
+    expect(player.balance).toEqual(90);
+  });
+
+  it('when player wins they double their stake', function() {
+    player.bet(10);
+    game.winnings(player);
+    expect(player.balance).toEqual(110)
+  });
+
+  it('when player draws they get their stake back', function() {
+    player.bet(10);
+    game.draw(player);
+    expect(player.balance).toEqual(100)
+  });
+
 });

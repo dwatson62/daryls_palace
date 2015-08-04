@@ -24,9 +24,22 @@ body {
   width: 300px;
 }
 
+.bet-btns {
+  background-color: black;
+  color: white;
+}
+
 .player-btn {
   background-color: black;
   color: white;
+}
+
+#balance-display {
+  padding-top: 10px;
+  border: solid black;
+  background-color: #00A300;
+  height: 50px;
+  width: 200px;
 }
 
 #dealer-score {
