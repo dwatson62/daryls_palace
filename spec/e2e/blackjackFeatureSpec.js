@@ -57,6 +57,7 @@ describe('Blackjack', function() {
   });
 
   it('has the option to play a new game', function() {
+    // currently causes an error if a blackjack is scored
     bet10.click();
     standbtn.click();
     expect(bet10.isPresent()).toBeTruthy;

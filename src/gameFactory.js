@@ -48,8 +48,8 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.winnings = function(player) {
-    var winnings = player.currentBet
-    player.balance += winnings * 2;
+    var winnings = player.currentBet * 2
+    player.balance += winnings;
     return winnings;
   };
 
@@ -58,9 +58,8 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.blackjack = function(player) {
-    var winnings = player.currentBet * 2.5
+    var winnings = (player.currentBet * 2.5) + player.currentBet
     player.balance += winnings;
-    player.balance += player.currentBet;
     return winnings;
   };
 
