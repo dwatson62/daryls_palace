@@ -1,13 +1,34 @@
+body {
+  background-image: url('http://solaireresort.com/cms/wp-content/uploads/2014/01/Blackjack1288x716-1288x716.jpg');
+}
+
 #dealer {
   border: solid black;
-  background-color: green;
-  height: 150px;
+  background-color: #00A300;
+  height: 135px;
   width: 600px;
 }
 
 #player {
   border: solid black;
-  background-color: green;
-  height: 150px;
+  background-color: #00A300;
+  height: 135px;
   width: 600px;
+}
+
+#player-buttons {
+  padding-top: 5px;
+  border: solid black;
+  background-color: #00A300;
+  height: 100px;
+  width: 300px;
+}
+
+.player-btn {
+  background-color: black;
+  color: white;
+}
+
+#dealer-score {
+
 }

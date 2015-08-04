@@ -1,7 +1,7 @@
-<button ng-click="bjctrl.startRound()" ng-hide="bjctrl.isGameStarted">Start</button>
-<button ng-click="bjctrl.hit()" ng-show="bjctrl.isGameStarted">Hit me</button>
-<button ng-click="bjctrl.stand()" ng-show="bjctrl.isGameStarted">Stand</button>
-<button ng-click="bjctrl.nextRound()" ng-show="bjctrl.isGameStarted">Next Round</button>
+<button class="player-btn" ng-click="bjctrl.startRound()" ng-hide="bjctrl.isGameStarted">Play</button>
+<button class="player-btn" ng-click="bjctrl.hit()" ng-show="bjctrl.isGameStarted">Hit me</button>
+<button class="player-btn" ng-click="bjctrl.stand()" ng-show="bjctrl.isGameStarted">Stand</button>
 <div id='player-score' ng-model="bjctrl.playerScore"> Player score: {{bjctrl.playerScore}} </div>
 <div id='dealer-score' ng-model="bjctrl.dealerScore"> Dealer score: {{bjctrl.dealerScore}} </div>
 <div id='result' ng-model="bjctrl.result"> {{bjctrl.result}} </div>
+<div id='blackjack-result' ng-model="bjctrl.blackjackResult"> {{bjctrl.blackjackResult}} </div>

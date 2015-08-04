@@ -38,12 +38,12 @@ blackjackGame.factory('gameFactory', function() {
     for (x in cards) {
       if (this.cardValue(cards[x]) == 11) { aceCount += 1; }
       total += this.cardValue(cards[x]);
+      if (total > 21 && aceCount > 0) {
+        total -= 10;
+        aceCount -= 1;
+      }
+      if (total > 21 && aceCount == 0) { return 'Bust'; }
     }
-    if (total > 21 && aceCount > 0) {
-      total -= 10;
-      aceCount -= 1;
-    }
-    if (total > 21 && aceCount == 0) { return 'Bust'; }
     return total;
   };
 

@@ -12,7 +12,11 @@
 <body ng-controller="BlackjackController as bjctrl">
   <br>
   <div class="row">
-    <div class="col-md-4"><center><% include buttons %></center></div>
+    <div class="col-md-4" style='padding-left: 35px; padding-top: 100px;'>
+      <div id='player-buttons'>
+        <center><% include buttons %></center>
+      </div>
+    </div>
     <div class="col-md-4">
       <div id='dealer'>
         <% include dealer %>
