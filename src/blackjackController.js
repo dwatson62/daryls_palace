@@ -11,11 +11,13 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.dealerCards = [];
   self.dealerScore;
+  self.dealerTurn = false;
 
-  self.isGameStarted = false
+  self.isGameStarted = false;
   self.result;
 
   self.startRound = function() {
+    self.dealerTurn = false;
     self.blackjackResult = null;
     self.playerCards = [];
     self.playerScore = null;
@@ -56,6 +58,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.dealersTurn = function() {
+    self.dealerTurn = true;
     while (self.dealerScore < 17) {
       // $timeout(function() {
         self.dealerHit();
