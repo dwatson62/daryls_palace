@@ -1,6 +1,8 @@
 Blackjack
 =======================
 
+[![Build Status](https://travis-ci.org/dwatson62/blackjack.svg?branch=master)](https://travis-ci.org/dwatson62/blackjack)
+
 ## Synopsis
 
 Blackjack in Angular. Currently it is one player against the dealer. Player can bet different amounts, hit, stand or double down and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. The game also knows when a player can split, but the full functionality has not been implemented yet.
