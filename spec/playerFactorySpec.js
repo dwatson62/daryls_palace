@@ -36,13 +36,19 @@ describe('Player Factory', function() {
   it('when player wins they double their stake', function() {
     player.bet(10);
     game.winnings(player);
-    expect(player.balance).toEqual(110)
+    expect(player.balance).toEqual(110);
   });
 
   it('when player draws they get their stake back', function() {
     player.bet(10);
     game.draw(player);
-    expect(player.balance).toEqual(100)
+    expect(player.balance).toEqual(100);
+  });
+
+  it('when player gets a blackjack they win 2.5x their stake', function() {
+    player.bet(10);
+    game.blackjack(player);
+    expect(player.balance).toEqual(125);
   });
 
 });

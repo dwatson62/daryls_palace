@@ -62,6 +62,8 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.blackjacks = function() {
     self.blackjackResult = 'Blackjack!';
+    game.blackjack(player);
+    self.playerBalance = '£' + player.balance;
   };
 
   self.dealersTurn = function() {

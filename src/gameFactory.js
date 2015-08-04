@@ -55,6 +55,11 @@ blackjackGame.factory('gameFactory', function() {
     player.balance += player.currentBet;
   };
 
+  Game.prototype.blackjack = function(player) {
+    player.balance += (player.currentBet * 2.5);
+    player.balance += player.currentBet;
+  };
+
   return Game;
 
 });
