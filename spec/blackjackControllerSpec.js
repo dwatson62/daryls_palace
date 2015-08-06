@@ -21,21 +21,23 @@ describe('Blackjack Controller', function() {
     });
 
     it('player gets two cards at the start of each game', function() {
-      expect(ctrl.playerCards.length).toEqual(2);
+      expect(ctrl.playerCards[0].length).toEqual(2);
     });
 
     it('player can hit', function() {
-      ctrl.hit();
+      ctrl.hit(0);
       expect(ctrl.result).toBeDefined();
     });
 
     it('player can stand, to find out the result', function() {
-      ctrl.stand();
+      ctrl.stand(0);
       expect(ctrl.result).toBeDefined();
     });
 
     it('can start a new round', function() {
-      expect(ctrl.playerCards.length).toEqual(2);
+      ctrl.stand(0);
+      ctrl.startRound(10);
+      expect(ctrl.playerCards[0].length).toEqual(2);
     });
 
   });

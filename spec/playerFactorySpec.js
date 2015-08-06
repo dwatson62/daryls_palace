@@ -15,8 +15,8 @@ describe('Player Factory', function() {
   });
 
   it('can receive a random card', function() {
-    player.getCard(game);
-    expect(player.currentCards.length).toEqual(1);
+    player.getCard(game, 0);
+    expect(player.currentCards[0].length).toEqual(1);
   });
 
   it('has a starting balance of 100', function() {
@@ -53,8 +53,8 @@ describe('Player Factory', function() {
 
   it('can double down below 14 and get 1 more card', function() {
     spyOn(Math, 'random').and.returnValue(0.09); // returns D6
-    player.getCard(game);
-    player.getCard(game);
+    player.getCard(game, 0);
+    player.getCard(game, 0);
     expect(player.doubleDown(game)).toEqual('D6');
   });
 
@@ -62,8 +62,8 @@ describe('Player Factory', function() {
 
     beforeEach(function() {
       spyOn(Math, 'random').and.returnValue(0.12); // returns D8
-      player.getCard(game);
-      player.getCard(game);
+      player.getCard(game, 0);
+      player.getCard(game, 0);
     });
 
     it('can split when given duplicate card numbers', function() {
@@ -72,28 +72,35 @@ describe('Player Factory', function() {
 
     it('can split and get an extra card', function() {
       player.split();
-      expect(player.splitCards).toEqual([['D8'], ['D8']])
+      expect(player.currentCards).toEqual([['D8'], ['D8']])
     });
 
     it('can hit on a split', function() {
       player.split();
-      player.splitHit(game, 0);
-      expect(player.splitCards).toEqual([['D8', 'D8'], ['D8']]);
+      player.getCard(game, 0);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8']]);
     });
 
     it('can stand on a split and receive that total', function() {
       player.split();
-      player.splitHit(game, 0);
-      player.splitStand(game, 0);
-      expect(game.pointsTotal(player.splitCards[0])).toEqual(16);
+      player.getCard(game, 0);
+      player.stand(game, 0);
+      expect(game.pointsTotal(player.currentCards[0])).toEqual(16);
+    });
+
+    it('when stands on a first split card, automatically hit on the next', function() {
+      player.split();
+      player.getCard(game, 0);
+      player.stand(game, 0);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8']]);
     });
 
     it('can stand on a split and hit on the next split card', function() {
       player.split();
-      player.splitHit(game, 0);
-      player.splitStand(game, 0);
-      player.splitHit(game, 1);
-      expect(player.splitCards).toEqual([['D8', 'D8'], ['D8', 'D8']]);
+      player.getCard(game, 0);
+      player.stand(game, 0);
+      player.getCard(game, 1);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8', 'D8']]);
     });
 
 

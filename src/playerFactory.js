@@ -1,20 +1,19 @@
 blackjackGame.factory('playerFactory', function() {
 
   var Player = function() {
-    this.currentCards = [];
-    this.splitCards = [];
+    this.currentCards = [[]];
     this.balance = 100;
     this.currentBet = 0;
   };
 
-  Player.prototype.getCard = function(game) {
+  Player.prototype.getCard = function(game, index) {
     var card = game.dealOne();
-    this.currentCards.push(card);
+    this.currentCards[index].push(card);
     return card;
   };
 
   Player.prototype.nextRound = function() {
-    this.currentCards = [];
+    this.currentCards = [[]];
     this.currentBet = 0;
     return this.currentCards;
   }
@@ -26,28 +25,33 @@ blackjackGame.factory('playerFactory', function() {
 
   Player.prototype.doubleDown = function(game) {
     this.bet(this.currentBet);
-    var card = this.getCard(game);
+    var card = this.getCard(game, 0);
     return card;
   };
 
   Player.prototype.canSplit = function(game) {
-    if (this.currentCards.length === 2) {
-      if (this.currentCards[0].substring(1) === this.currentCards[1].substring(1)) {
-        return true;
-      }
+    var cards = this.currentCards[0]
+    if (cards.length === 2) {
+      if (cards[0].substring(1) === cards[1].substring(1)) { return true; }
     }
     return false;
   };
 
   Player.prototype.split = function() {
-    this.splitCards.push([this.currentCards[0]], [this.currentCards[1]]);
+    var card1 = this.currentCards[0][0];
+    var card2 = this.currentCards[0][1];
+    this.currentCards = [[card1], [card2]];
     this.bet(this.currentBet);
-    return this.splitCards;
+    return this.currentCards;
   };
 
-  Player.prototype.splitHit = function(game, index) {
-    var card = game.dealOne();
-    this.splitCards[index].push(card);
+  Player.prototype.stand = function(game, index) {
+    console.log(index)
+    console.log(this.currentCards.length)
+    if (index != this.currentCards.length - 1) {
+      var card = game.dealOne();
+      this.currentCards[index + 1].push(card);
+    }
   };
 
   return Player;
