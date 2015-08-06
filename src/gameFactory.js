@@ -25,9 +25,7 @@ blackjackGame.factory('gameFactory', function() {
     var card = this.deck[x];
     if (this.canShuffle === true) {
       this.deck.splice(x, 1);
-      if (this.deck.length < 12) {
-        this.createDeck();
-      }
+      if (this.deck.length < 12) { this.createDeck(); }
     }
     return card;
   };
@@ -54,7 +52,7 @@ blackjackGame.factory('gameFactory', function() {
     }
     return total;
   };
-6
+
   Game.prototype.winnings = function(player) {
     var winnings = player.currentBet * 2
     player.balance += winnings;

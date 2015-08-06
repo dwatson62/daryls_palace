@@ -12,7 +12,7 @@ blackjackGame.factory('playerFactory', function() {
     return card;
   };
 
-  Player.prototype.nextRound = function() {
+  Player.prototype.clearRound = function() {
     this.currentCards = [[]];
     this.currentBet = 0;
     return this.currentCards;

@@ -38,12 +38,8 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.clearPreviousRound = function() {
     self.dealerTurn = false;
     self.blackjackResult = null;
-    self.playerCards = [[]];
-    self.playerScore = null;
-    player.nextRound();
-    self.dealerCards = [];
-    self.dealerScore = null;
-    dealer.nextRound();
+    player.clearRound();
+    dealer.clearRound();
     self.result = null;
     self.splitOnce = false;
   }
