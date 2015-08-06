@@ -50,10 +50,6 @@ blackjackGame.factory('playerFactory', function() {
     this.splitCards[index].push(card);
   };
 
-  Player.prototype.splitStand = function(game) {
-
-  };
-
   return Player;
 
 });

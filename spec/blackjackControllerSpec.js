@@ -60,18 +60,52 @@ describe('Blackjack Controller', function() {
       ctrl.stand();
 
       expect(ctrl.playerBalance).toEqual('£100');
-      expect(ctrl.result).toEqual('Draw')
+      expect(ctrl.result).toEqual('Draw');
     });
+  });
 
-    it('player can split and bet extra money', function() {
+  describe('Splitting', function() {
+
+    beforeEach(function() {
+      // D6
       spyOn(Math, 'random').and.returnValue(0.09);
       ctrl.startRound(10);
+    });
+
+    it('player doubles bet on a split', function() {
       ctrl.split();
       expect(ctrl.playerBalance).toEqual('£80');
     });
 
+    it('player automatically gets an extra card on first split card', function() {
+      ctrl.split();
+      expect(ctrl.splitCards).toEqual([['D6', 'D6'],['D6']]);
+    });
+
+    it('player can hit on first split card', function() {
+      ctrl.split();
+      ctrl.splitHit(0);
+      expect(ctrl.splitCards).toEqual([['D6', 'D6', 'D6'],['D6']]);
+    });
+
+    it('player can stand on first split card, and automatically hits on second split card', function() {
+      ctrl.split();
+      ctrl.splitStand(0);
+      expect(ctrl.splitCards).toEqual([['D6', 'D6'],['D6', 'D6']]);
+    });
+
+    it('player can draw with dealer on both split bets', function() {
+      ctrl.split();
+      ctrl.splitHit(0);
+      ctrl.splitStand(0);
+      ctrl.splitHit(1);
+      ctrl.splitStand(1);
+      expect(ctrl.playerBalance).toEqual('£100');
+      expect(ctrl.result).toEqual('Draw');
+    });
 
   });
+
 
 
 });

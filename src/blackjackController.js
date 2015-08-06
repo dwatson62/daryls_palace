@@ -8,6 +8,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.playerBalance = '£' + player.balance;
   self.playerCards = [];
   self.dealerCards = [];
+  self.splitCards = [];
 
   self.startRound = function(amount) {
     self.clearPreviousRound();
@@ -76,23 +77,26 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.split = function() {
-    player.split();
+    self.splitCards = player.split();
     self.playerBalance = '£' + player.balance;
     self.splitHit(0);
   };
 
   self.splitHit = function(index) {
-    player.splitHit(game, index)
+    player.splitHit(game, index);
     self.calculateSplitScore(player);
+    if (self.playerScore == 21) { self.splitStand(index); }
+  };
+
+  self.splitStand = function(index) {
+    if (index === 0) { self.splitHit(1); }
+    else { self.stand(); }
   };
 
   self.calculateSplitScore = function(index) {
     var total = game.pointsTotal(player.splitCards[index]);
-    if (total == 21 && player.splitCards[index].length == 2) {
-      self.blackjacks();
-      self.playerTurn = false;
-    }
-    else if (total == 21) { self.splitStand(); }
+    self.playerScore = total;
+    if (self.playerScore == 'Bust') { self.splitStand(index); }
   }
 
   self.calculateScore = function(user) {
@@ -126,13 +130,25 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     }
   };
 
+  self.prepareFinalCards = function() {
+    var finalCards = [];
+    if (self.splitCards.length > 0) {
+      finalCards = self.splitCards;
+    } else { finalCards.push(self.playerCards) }
+    return finalCards;
+  };
+
   self.determineWinner = function() {
-    if ( self.dealerScore === self.playerScore) { self.isADraw(); }
-    else if (self.playerScore > self.dealerScore || (self.dealerScore === 'Bust' && self.playerScore != 'Bust')) {
-        self.playerWins();
+    var finalCards = self.prepareFinalCards();
+    for (x in finalCards) {
+      var total = game.pointsTotal(finalCards[x]);
+      if ( self.dealerScore === total) { self.isADraw(); }
+      else if (total > self.dealerScore || (self.dealerScore === 'Bust' && total != 'Bust')) {
+          self.playerWins();
+        }
+      else {
+        self.result = 'You lose';
       }
-    else {
-      self.result = 'You lose';
     }
   };
 
