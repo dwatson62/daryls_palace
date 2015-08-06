@@ -4,7 +4,7 @@ describe('Blackjack Controller', function() {
 
   var ctrl;
 
-  beforeEach(inject(function($controller) {
+  beforeEach(inject(function($controller, gameFactory) {
     ctrl = $controller('BlackjackController');
   }));
 
@@ -44,6 +44,10 @@ describe('Blackjack Controller', function() {
 
   describe('Winning and losing', function() {
 
+    beforeEach(function() {
+      ctrl.toggleShuffleDeck();
+    });
+
     it('player can lose their bet with a lower score than the dealer', function() {
       // D5
       spyOn(Math, 'random').and.returnValue(0.07);
@@ -74,6 +78,7 @@ describe('Blackjack Controller', function() {
       // D6
       D6 = { card: 'D6', src: '/images/cards/D6.png' };
       spyOn(Math, 'random').and.returnValue(0.09);
+      ctrl.toggleShuffleDeck();
       ctrl.startRound(10);
     });
 
@@ -101,6 +106,8 @@ describe('Blackjack Controller', function() {
 
     it('player can draw with dealer on both split bets', function() {
       ctrl.split();
+      Math.random.reset();
+      spyOn(Math, 'random').and.returnValue(0.04);
       ctrl.hit(0);
       ctrl.stand(0);
       ctrl.hit(1);

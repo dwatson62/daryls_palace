@@ -10,6 +10,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.dealerCards = [];
   self.splitOnce = false;
 
+  self.toggleShuffleDeck = function() {
+    game.canShuffle = false;
+  };
+
   self.startRound = function(amount) {
     self.clearPreviousRound();
     self.playerTurn = true;

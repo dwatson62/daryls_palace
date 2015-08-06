@@ -1,11 +1,12 @@
 blackjackGame.factory('gameFactory', function() {
 
   var Game = function() {
-    this.deck = []
     this.createDeck();
+    this.canShuffle = true;
   };
 
   Game.prototype.createDeck = function() {
+    this.deck = []
     var suits = ["D", "H", "C", "S"];
     for(x in suits) { this.createSuit(suits[x]); }
   };
@@ -20,8 +21,15 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.dealOne = function() {
-    x = Math.floor(Math.random() * 52);
-    return this.deck[x];
+    x = Math.floor(Math.random() * this.deck.length);
+    var card = this.deck[x];
+    if (this.canShuffle === true) {
+      this.deck.splice(x, 1);
+      if (this.deck.length < 12) {
+        this.createDeck();
+      }
+    }
+    return card;
   };
 
   Game.prototype.cardValue = function(card) {

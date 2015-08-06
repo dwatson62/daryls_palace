@@ -8,6 +8,7 @@ describe('Player Factory', function() {
   beforeEach(inject(function(gameFactory, playerFactory) {
     player = new playerFactory();
     game = new gameFactory();
+    game.canShuffle = false;
   }));
 
   it('is defined', function() {
@@ -64,6 +65,7 @@ describe('Player Factory', function() {
 
     beforeEach(function() {
       spyOn(Math, 'random').and.returnValue(0.12); // returns D8
+      game.canShuffle = false;
       player.getCard(game, 0);
       player.getCard(game, 0);
       D8 = { card: 'D8', src: '/images/cards/D8.png' };
@@ -87,6 +89,7 @@ describe('Player Factory', function() {
     it('can stand on a split and receive that total', function() {
       player.split();
       player.getCard(game, 0);
+      game.createDeck();
       player.stand(game, 0);
       expect(game.pointsTotal(player.currentCards[0])).toEqual(16);
     });
@@ -94,6 +97,7 @@ describe('Player Factory', function() {
     it('when stands on a first split card, automatically hit on the next', function() {
       player.split();
       player.getCard(game, 0);
+      game.createDeck();
       player.stand(game, 0);
       expect(player.currentCards).toEqual([[D8, D8], [D8, D8]]);
     });
@@ -101,7 +105,9 @@ describe('Player Factory', function() {
     it('can stand on a split and hit on the next split card', function() {
       player.split();
       player.getCard(game, 0);
+      game.createDeck();
       player.stand(game, 0);
+      game.createDeck();
       player.getCard(game, 1);
       expect(player.currentCards).toEqual([[D8, D8], [D8, D8, D8]]);
     });
