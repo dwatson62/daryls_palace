@@ -36,8 +36,8 @@ blackjackGame.factory('gameFactory', function() {
     var total = 0;
     var aceCount = 0;
     for (x in cards) {
-      if (this.cardValue(cards[x]) == 11) { aceCount += 1; }
-      total += this.cardValue(cards[x]);
+      if (this.cardValue(cards[x].card) == 11) { aceCount += 1; }
+      total += this.cardValue(cards[x].card);
       if (total > 21 && aceCount > 0) {
         total -= 10;
         aceCount -= 1;

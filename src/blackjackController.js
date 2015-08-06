@@ -36,13 +36,13 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.getACard = function(user, index) {
-    var findCard = user.getCard(game, index);
-    var card = { 'src': '/images/cards/' + findCard + '.png' };
+    var card = user.getCard(game, index);
     return card;
   };
 
   self.hit = function(index) {
-    self.playerCards[index].push( self.getACard(player, index) );
+    player.getCard(game, index);
+    self.playerCards = player.currentCards;
     self.calculateScore(player);
     if (self.playerScore == 21 && self.playerCards.length == 2) {
       self.blackjacks();
@@ -54,8 +54,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.stand = function(index) {
     // next player turn
     player.stand(game, index)
-    self.playerTurn = false;
-    self.dealersTurn();
+    if (index === self.playerCards.length - 1) {
+      self.playerTurn = false;
+      self.dealersTurn();
+    }
   };
 
   self.showDoubleDown = function() {
@@ -77,20 +79,9 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.split = function() {
-    self.splitCards = player.split();
+    self.playerCards = player.split();
     self.playerBalance = '£' + player.balance;
-    self.splitHit(0);
-  };
-
-  self.splitHit = function(index) {
-    player.splitHit(game, index);
-    self.calculateSplitScore(player);
-    if (self.playerScore == 21) { self.splitStand(index); }
-  };
-
-  self.splitStand = function(index) {
-    if (index === 0) { self.splitHit(1); }
-    else { self.stand(); }
+    self.hit(0);
   };
 
   self.calculateSplitScore = function(index) {

@@ -48,8 +48,8 @@ describe('Blackjack Controller', function() {
       // D5
       spyOn(Math, 'random').and.returnValue(0.07);
       ctrl.startRound(10);
-      ctrl.hit();
-      ctrl.stand();
+      ctrl.hit(0);
+      ctrl.stand(0);
       expect(ctrl.playerBalance).toEqual('£90')
       expect(ctrl.result).toEqual('You lose')
     });
@@ -58,8 +58,8 @@ describe('Blackjack Controller', function() {
       // D6
       spyOn(Math, 'random').and.returnValue(0.09);
       ctrl.startRound(10);
-      ctrl.hit();
-      ctrl.stand();
+      ctrl.hit(0);
+      ctrl.stand(0);
 
       expect(ctrl.playerBalance).toEqual('£100');
       expect(ctrl.result).toEqual('Draw');
@@ -68,8 +68,11 @@ describe('Blackjack Controller', function() {
 
   describe('Splitting', function() {
 
+    var D6
+
     beforeEach(function() {
       // D6
+      D6 = { card: 'D6', src: '/images/cards/D6.png' };
       spyOn(Math, 'random').and.returnValue(0.09);
       ctrl.startRound(10);
     });
@@ -81,27 +84,27 @@ describe('Blackjack Controller', function() {
 
     it('player automatically gets an extra card on first split card', function() {
       ctrl.split();
-      expect(ctrl.splitCards).toEqual([['D6', 'D6'],['D6']]);
+      expect(ctrl.playerCards[0].length).toEqual(2);
     });
 
     it('player can hit on first split card', function() {
       ctrl.split();
-      ctrl.splitHit(0);
-      expect(ctrl.splitCards).toEqual([['D6', 'D6', 'D6'],['D6']]);
+      ctrl.hit(0);
+      expect(ctrl.playerCards).toEqual([[D6, D6, D6],[D6]]);
     });
 
     it('player can stand on first split card, and automatically hits on second split card', function() {
       ctrl.split();
-      ctrl.splitStand(0);
-      expect(ctrl.splitCards).toEqual([['D6', 'D6'],['D6', 'D6']]);
+      ctrl.stand(0);
+      expect(ctrl.playerCards).toEqual([[D6, D6],[D6, D6]]);
     });
 
     it('player can draw with dealer on both split bets', function() {
       ctrl.split();
-      ctrl.splitHit(0);
-      ctrl.splitStand(0);
-      ctrl.splitHit(1);
-      ctrl.splitStand(1);
+      ctrl.hit(0);
+      ctrl.stand(0);
+      ctrl.hit(1);
+      ctrl.stand(1);
       expect(ctrl.playerBalance).toEqual('£100');
       expect(ctrl.result).toEqual('Draw');
     });
