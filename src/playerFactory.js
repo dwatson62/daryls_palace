@@ -8,7 +8,7 @@ blackjackGame.factory('playerFactory', function() {
 
   Player.prototype.getCard = function(game, index) {
     var card = game.dealOne();
-    this.currentCards[index].push({ 'card': card, 'src': '/images/cards/' + card + '.png' });
+    this.currentCards[index].push(card);
     return card;
   };
 
@@ -32,7 +32,7 @@ blackjackGame.factory('playerFactory', function() {
   Player.prototype.canSplit = function(game) {
     var cards = this.currentCards[0]
     if (cards.length === 2) {
-      if (cards[0].card.substring(1) === cards[1].card.substring(1)) { return true; }
+      if (cards[0].substring(1) === cards[1].substring(1)) { return true; }
     }
     return false;
   };

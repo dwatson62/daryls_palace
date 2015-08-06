@@ -61,14 +61,11 @@ describe('Player Factory', function() {
 
   describe('Splitting', function() {
 
-    var D8
-
     beforeEach(function() {
       spyOn(Math, 'random').and.returnValue(0.12); // returns D8
       game.canShuffle = false;
       player.getCard(game, 0);
       player.getCard(game, 0);
-      D8 = { card: 'D8', src: '/images/cards/D8.png' };
     });
 
     it('can split when given duplicate card numbers', function() {
@@ -77,13 +74,13 @@ describe('Player Factory', function() {
 
     it('can split and get an extra card', function() {
       player.split();
-      expect(player.currentCards).toEqual([[D8], [D8]])
+      expect(player.currentCards).toEqual([['D8'], ['D8']])
     });
 
     it('can hit on a split', function() {
       player.split();
       player.getCard(game, 0);
-      expect(player.currentCards).toEqual([[D8, D8], [D8]]);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8']]);
     });
 
     it('can stand on a split and receive that total', function() {
@@ -99,7 +96,7 @@ describe('Player Factory', function() {
       player.getCard(game, 0);
       game.createDeck();
       player.stand(game, 0);
-      expect(player.currentCards).toEqual([[D8, D8], [D8, D8]]);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8']]);
     });
 
     it('can stand on a split and hit on the next split card', function() {
@@ -109,7 +106,7 @@ describe('Player Factory', function() {
       player.stand(game, 0);
       game.createDeck();
       player.getCard(game, 1);
-      expect(player.currentCards).toEqual([[D8, D8], [D8, D8, D8]]);
+      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8', 'D8']]);
     });
 
 

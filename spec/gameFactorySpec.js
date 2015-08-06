@@ -54,27 +54,27 @@ describe('Game Factory', function() {
 
   it('returns the correct total of two cards', function() {
 
-    var cards = [ { 'card': game.deck[0] }, {'card': game.deck[1] } ] // D2 & D3
+    var cards = [ game.deck[0], game.deck[1] ] // D2 & D3
     expect(game.pointsTotal(cards)).toEqual(5);
   });
 
   it('knows when the player is bust', function() {
-    var cards = [ { 'card': game.deck[10] }, { 'card': game.deck[3] }, { 'card': game.deck[9] } ] // DQ & D5 & DJ (25)
+    var cards = [ game.deck[10], game.deck[3], game.deck[9] ] // DQ & D5 & DJ (25)
     expect(game.pointsTotal(cards)).toEqual('Bust');
   });
 
   it('changes Ace value to 1 if player total is over 21', function() {
-    var cards = [ { 'card': game.deck[12] }, { 'card': game.deck[3] }, { 'card': game.deck[9] } ] // DA & D5 & DJ (16)
+    var cards = [ game.deck[12], game.deck[3], game.deck[9] ] // DA & D5 & DJ (16)
     expect(game.pointsTotal(cards)).toEqual(16);
   });
 
   it('can still go bust with an Ace', function() {
-    var cards = [ { 'card': game.deck[12] }, { 'card': game.deck[3] }, { 'card': game.deck[9] }, { 'card': game.deck[9] } ] // DA & D5 & DJ & DJ (26)
+    var cards = [ game.deck[12], game.deck[3], game.deck[9], game.deck[9] ] // DA & D5 & DJ & DJ (26)
     expect(game.pointsTotal(cards)).toEqual('Bust');
   });
 
   it('can handle multiple Aces', function() {
-    var cards = [ { 'card': game.deck[12] }, { 'card': game.deck[12] }, { 'card': game.deck[3] } ] // DA & DA & D5 (17)
+    var cards = [ game.deck[12], game.deck[12], game.deck[3] ] // DA & DA & D5 (17)
     expect(game.pointsTotal(cards)).toEqual(17);
   });
 

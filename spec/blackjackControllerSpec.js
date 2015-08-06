@@ -72,11 +72,8 @@ describe('Blackjack Controller', function() {
 
   describe('Splitting', function() {
 
-    var D6
-
     beforeEach(function() {
       // D6
-      D6 = { card: 'D6', src: '/images/cards/D6.png' };
       spyOn(Math, 'random').and.returnValue(0.09);
       ctrl.toggleShuffleDeck();
       ctrl.startRound(10);
@@ -95,19 +92,17 @@ describe('Blackjack Controller', function() {
     it('player can hit on first split card', function() {
       ctrl.split();
       ctrl.hit(0);
-      expect(ctrl.playerCards).toEqual([[D6, D6, D6],[D6]]);
+      expect(ctrl.playerCards).toEqual([['D6', 'D6', 'D6'],['D6']]);
     });
 
     it('player can stand on first split card, and automatically hits on second split card', function() {
       ctrl.split();
       ctrl.stand(0);
-      expect(ctrl.playerCards).toEqual([[D6, D6],[D6, D6]]);
+      expect(ctrl.playerCards).toEqual([['D6', 'D6'],['D6', 'D6']]);
     });
 
     it('player can draw with dealer on both split bets', function() {
       ctrl.split();
-      Math.random.reset();
-      spyOn(Math, 'random').and.returnValue(0.04);
       ctrl.hit(0);
       ctrl.stand(0);
       ctrl.hit(1);

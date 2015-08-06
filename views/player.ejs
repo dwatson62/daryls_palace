@@ -1,3 +1,3 @@
-<span id='player-cards' ng-repeat="card in bjctrl.playerCards[0]">
-  <img class='player-cards' ng-src="{{card.src}}" height='130'>
+<span id='player-cards' ng-repeat="card in bjctrl.playerCards[0] track by $index">
+  <img class='player-cards' ng-src="/images/cards/{{card}}.png" height='130'>
 </span>

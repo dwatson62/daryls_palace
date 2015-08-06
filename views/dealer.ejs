@@ -1,4 +1,4 @@
-<span id='dealer-cards' ng-repeat="card in bjctrl.dealerCards[0]">
-  <img class="dealer-cards" ng-src="{{card.src}}" height='130'>
+<span id='dealer-cards' ng-repeat="card in bjctrl.dealerCards[0] track by $index">
+  <img class="dealer-cards" ng-src="/images/cards/{{card}}.png" height='130'>
   <img id="dealer-second-card" src="/images/cards/FD.jpg" height="130" ng-hide="bjctrl.dealerTurn">
 </span>
