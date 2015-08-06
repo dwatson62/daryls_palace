@@ -75,6 +75,26 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.stand();
   };
 
+  self.split = function() {
+    player.split();
+    self.playerBalance = '£' + player.balance;
+    self.splitHit(0);
+  };
+
+  self.splitHit = function(index) {
+    player.splitHit(game, index)
+    self.calculateSplitScore(player);
+  };
+
+  self.calculateSplitScore = function(index) {
+    var total = game.pointsTotal(player.splitCards[index]);
+    if (total == 21 && player.splitCards[index].length == 2) {
+      self.blackjacks();
+      self.playerTurn = false;
+    }
+    else if (total == 21) { self.splitStand(); }
+  }
+
   self.calculateScore = function(user) {
     var total = game.pointsTotal(user.currentCards);
     if (user === player) {

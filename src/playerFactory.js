@@ -2,6 +2,7 @@ blackjackGame.factory('playerFactory', function() {
 
   var Player = function() {
     this.currentCards = [];
+    this.splitCards = [];
     this.balance = 100;
     this.currentBet = 0;
   };
@@ -36,6 +37,21 @@ blackjackGame.factory('playerFactory', function() {
       }
     }
     return false;
+  };
+
+  Player.prototype.split = function() {
+    this.splitCards.push([this.currentCards[0]], [this.currentCards[1]]);
+    this.bet(this.currentBet);
+    return this.splitCards;
+  };
+
+  Player.prototype.splitHit = function(game, index) {
+    var card = game.dealOne();
+    this.splitCards[index].push(card);
+  };
+
+  Player.prototype.splitStand = function(game) {
+
   };
 
   return Player;
