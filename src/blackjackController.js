@@ -1,9 +1,10 @@
-blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', '$timeout', function(gameFactory, playerFactory, $timeout) {
+blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', 'hintFactory', function(gameFactory, playerFactory, hintFactory) {
 
   var self = this;
   var player = new playerFactory();
   var dealer = new playerFactory();
   var game = new gameFactory();
+  var hint = new hintFactory();
 
   self.game = game;
   self.playerBalance = '£' + player.balance;
@@ -144,6 +145,12 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     var winnings = game.winnings(player);
     self.playerBalance = '£' + player.balance;
     self.result = 'Player wins £' + winnings;
+  };
+
+  self.giveHint = function() {
+    self.calculateScore(player);
+    self.calculateScore(dealer);
+    return hint.giveHint(self.playerScore, self.dealerScore);
   };
 
 }]);
