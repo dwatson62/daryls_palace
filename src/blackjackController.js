@@ -8,6 +8,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.game = game;
   self.playerBalance = '£' + player.balance;
+  self.cardCountingTotal = 0
 
   // for development
 
@@ -28,6 +29,21 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.toggleShuffleDeck = function() {
     game.canShuffle = false;
+  };
+
+  self.shuffleShoe = function() {
+    if (game.deck.length < 12) {
+      game.createDeck();
+      self.displayHint = 'Shuffling the shoe';
+      self.cardCountingTotal = 0
+    }
+  };
+
+  self.cardCounting = function(card) {
+    var value = game.cardValue(card);
+    if (value <= 6) { self.cardCountingTotal += 1 }
+    if (value >= 10) { self.cardCountingTotal -= 1 }
+    console.log(self.cardCountingTotal)
   };
 
   self.showDoubleDownButton = function() {
@@ -68,9 +84,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.dealerHit = function() {
-    dealer.getCard(game, 0);
+    var card = dealer.getCard(game);
     self.dealerCards = dealer.currentCards;
     self.calculateScore(dealer);
+    self.cardCounting(card);
   };
 
   self.dealersTurn = function() {
@@ -81,9 +98,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.hit = function() {
     self.displayHint = null;
-    player.getCard(game);
+    var card = player.getCard(game);
     self.playerCards = player.currentCards;
     self.calculateScore(player);
+    self.cardCounting(card);
     if (self.playerScore == 'Bust' || self.playerScore === 21) { self.stand(); }
   };
 
@@ -142,6 +160,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
         }
       else { self.result = 'You lose'; }
     }
+    self.shuffleShoe();
   };
 
   self.isADraw = function() {

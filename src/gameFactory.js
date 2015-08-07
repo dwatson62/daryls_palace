@@ -8,7 +8,10 @@ blackjackGame.factory('gameFactory', function() {
   Game.prototype.createDeck = function() {
     this.deck = []
     var suits = ["D", "H", "C", "S"];
-    for(x in suits) { this.createSuit(suits[x]); }
+    // creates a shoe with four decks
+    for (i = 0; i < 1; i ++) {
+      for(x in suits) { this.createSuit(suits[x]); }
+    }
   };
 
   Game.prototype.createSuit = function(suit) {
@@ -25,7 +28,6 @@ blackjackGame.factory('gameFactory', function() {
     var card = this.deck[x];
     if (this.canShuffle === true) {
       this.deck.splice(x, 1);
-      if (this.deck.length < 12) { this.createDeck(); }
     }
     return card;
   };
