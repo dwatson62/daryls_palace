@@ -25,13 +25,20 @@ blackjackGame.factory('playerFactory', function() {
     this.currentBet += amount;
   };
 
+  Player.prototype.canDouble = function(game) {
+    var cards = this.currentCards[this.handIndex]
+    if (game.pointsTotal(cards) < 14) { return true; }
+    if (cards[0].substring(1) === 'A' || cards[0].substring(1) === 'A') { return true; }
+    return false;
+  };
+
   Player.prototype.doubleDown = function(game) {
     this.bet(this.currentBet);
     var card = this.getCard(game, 0);
     return card;
   };
 
-  Player.prototype.canSplit = function(game) {
+  Player.prototype.canSplit = function() {
     if (this.currentCards.length === 1 && this.currentCards[0].length === 2) {
       var cards = this.currentCards[0]
       if (cards[0].substring(1) === cards[1].substring(1)) { return true; }

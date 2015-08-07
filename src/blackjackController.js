@@ -31,12 +31,17 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.showDoubleDownButton = function() {
-    if (self.playerScore < 14 && self.playerTurn === true) { return true; }
+    if (player.canDouble(game) === true && self.playerTurn === true) { return true; }
     return false;
   };
 
   self.showSplitButton = function() {
     if (player.canSplit() === true && self.playerTurn === true) { return true; }
+    return false;
+  };
+
+  self.showHintButton = function() {
+    if (self.playerScore <= 17 && self.playerTurn === true) { return true; }
     return false;
   };
 
@@ -75,6 +80,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.hit = function() {
+    self.displayHint = null;
     player.getCard(game);
     self.playerCards = player.currentCards;
     self.calculateScore(player);
@@ -83,6 +89,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.stand = function() {
     // next player turn
+    self.displayHint = null;
     var result = player.stand(game)
     self.calculateScore(player);
     if (result === 'done') {
@@ -92,6 +99,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.doubleDown = function() {
+    self.displayHint = null;
     player.doubleDown(game);
     self.playerCards = player.currentCards;
     self.calculateScore(player);
@@ -100,6 +108,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.split = function() {
+    self.displayHint = null;
     self.playerCards = player.split();
     self.playerBalance = '£' + player.balance;
     self.hit();
@@ -148,9 +157,9 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.giveHint = function() {
-    self.calculateScore(player);
     self.calculateScore(dealer);
-    return hint.giveHint(self.playerScore, self.dealerScore);
+    var cards = self.playerCards[player.handIndex]
+    self.displayHint = hint.giveHint(cards, self.dealerScore, game);
   };
 
 }]);

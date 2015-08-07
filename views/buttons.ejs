@@ -7,7 +7,9 @@
 <button class="player-btn" id='stand-btn' ng-click="bjctrl.stand()" ng-show="bjctrl.playerTurn">Stand</button>
 <button class="player-btn" id='dbl-down-btn' ng-click="bjctrl.doubleDown()" ng-show="bjctrl.showDoubleDownButton()">Double Down</button>
 <button class="player-btn" id='split-btn' ng-click="bjctrl.split()" ng-show="bjctrl.showSplitButton()">Split</button>
+<button class="player-btn" id='hint-btn' ng-click="bjctrl.giveHint()" ng-show="bjctrl.showHintButton()">Show Hint</button>
 <div id='player-balance' ng-model="bjctrl.playerBalance"> {{bjctrl.playerBalance}} </div>
 <div id='result' ng-model="bjctrl.result"> {{bjctrl.result}} </div>
 <div id='player-winnings' ng-model="bjctrl.playerWinnings"> {{bjctrl.playerWinnings}} </div>
 <div id='blackjack-result' ng-model="bjctrl.blackjackResult"> {{bjctrl.blackjackResult}} </div>
+<div id='display-hint' ng-model="bjctrl.displayHint"> {{bjctrl.displayHint}} </div>
