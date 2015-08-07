@@ -4,8 +4,8 @@
 <button class="bet-btns" id='bet10-btn' ng-click="bjctrl.startRound(20)" ng-hide="bjctrl.playerTurn">£20</button>
 <button class="player-btn" id='hit-btn' ng-click="bjctrl.hit(0)" ng-hide="bjctrl.hasSplit" ng-show="bjctrl.playerTurn">Hit me</button>
 <button class="player-btn" id='stand-btn' ng-click="bjctrl.stand(0)" ng-hide="bjctrl.hasSplit" ng-show="bjctrl.playerTurn">Stand</button>
-<button class="player-btn" id='dbl-down-btn' ng-click="bjctrl.doubleDown(0)" ng-show="bjctrl.showDoubleDown()">Double Down</button>
-<button class="player-btn" id='split-btn' ng-click="" ng-show="bjctrl.showSplit()">Split</button>
+<button class="player-btn" id='dbl-down-btn' ng-click="bjctrl.doubleDown(0)" ng-show="bjctrl.showDoubleDownButton()">Double Down</button>
+<button class="player-btn" id='split-btn' ng-click="" ng-show="bjctrl.showSplitButton()">Split</button>
 <button class="player-btn" id='hit-split-btn' ng-click="bjctrl.hit(1)" ng-show="bjctrl.hasSplit()">Split</button>
 <button class="player-btn" id='stand-split-btn' ng-click="bjctrl.stand(1)" ng-show="bjctrl.hasSplit()">Split</button>
 <div id='player-balance' ng-model="bjctrl.playerBalance"> {{bjctrl.playerBalance}} </div>

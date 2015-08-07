@@ -53,7 +53,8 @@ describe('Player Factory', function() {
   });
 
   it('can double down below 14 and get 1 more card', function() {
-    spyOn(Math, 'random').and.returnValue(0.09); // returns D6
+    // returns D6
+    spyOn(game, 'dealOne').and.returnValue('D6')
     player.getCard(game, 0);
     player.getCard(game, 0);
     expect(player.doubleDown(game)).toEqual('D6');
@@ -62,7 +63,7 @@ describe('Player Factory', function() {
   describe('Splitting', function() {
 
     beforeEach(function() {
-      spyOn(Math, 'random').and.returnValue(0.12); // returns D8
+      spyOn(game, 'dealOne').and.returnValue('D8')
       game.canShuffle = false;
       player.getCard(game, 0);
       player.getCard(game, 0);

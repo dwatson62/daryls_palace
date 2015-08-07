@@ -11,8 +11,7 @@ describe('Blackjack Controller', function() {
   describe('Basic moves', function() {
 
     beforeEach(function() {
-      // return D6
-      spyOn(Math, 'random').and.returnValue(0.09);
+      spyOn(ctrl.game, 'dealOne').and.returnValue('D6');
       ctrl.startRound(10);
     });
 
@@ -49,8 +48,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can lose their bet with a lower score than the dealer', function() {
-      // D5
-      spyOn(Math, 'random').and.returnValue(0.07);
+      spyOn(ctrl.game, 'dealOne').and.returnValue('D5');
       ctrl.startRound(10);
       ctrl.hit(0);
       ctrl.stand(0);
@@ -59,8 +57,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can draw and get their stake back', function() {
-      // D6
-      spyOn(Math, 'random').and.returnValue(0.09);
+      spyOn(ctrl.game, 'dealOne').and.returnValue('D6');
       ctrl.startRound(10);
       ctrl.hit(0);
       ctrl.stand(0);
@@ -74,7 +71,7 @@ describe('Blackjack Controller', function() {
 
     beforeEach(function() {
       // D6
-      spyOn(Math, 'random').and.returnValue(0.09);
+      spyOn(ctrl.game, 'dealOne').and.returnValue('D6');
       ctrl.toggleShuffleDeck();
       ctrl.startRound(10);
     });
@@ -112,7 +109,5 @@ describe('Blackjack Controller', function() {
     });
 
   });
-
-
 
 });

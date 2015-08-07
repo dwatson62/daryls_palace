@@ -5,18 +5,20 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   var dealer = new playerFactory();
   var game = new gameFactory();
 
+  self.game = game;
+
   self.playerBalance = '£' + player.balance;
 
   self.toggleShuffleDeck = function() {
     game.canShuffle = false;
   };
 
-  self.showDoubleDown = function() {
+  self.showDoubleDownButton = function() {
     if (self.playerScore < 14 && self.playerTurn === true) { return true; }
     return false;
   };
 
-  self.showSplit = function() {
+  self.showSplitButton = function() {
     if (player.canSplit() === true && self.playerTurn === true) { return true; }
     return false;
   };
@@ -53,9 +55,6 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     dealer.getCard(game, 0);
     self.dealerCards = dealer.currentCards;
     self.calculateScore(dealer, 0);
-    if (self.dealerScore == 21 && self.dealerCards.length == 2) {
-      self.blackjacks();
-    }
   };
 
   self.dealersTurn = function() {
@@ -68,10 +67,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     player.getCard(game, index);
     self.playerCards = player.currentCards;
     self.calculateScore(player, 0);
-    if (self.playerScore == 21 && self.playerCards[index].length == 2) {
-      self.blackjacks();
-      self.playerTurn = false;
-    }
+    if (self.playerScore == 'Bust' || self.playerScore === 21) { self.stand(index); }
   };
 
   self.stand = function(index) {
@@ -98,11 +94,14 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.calculateScore = function(user, index) {
-    var total = game.pointsTotal(user.currentCards[index]);
+    var cards = user.currentCards[index];
+    var total = game.pointsTotal(cards)
     if (user === player) {
       self.playerScore = total;
-      if (self.playerScore == 'Bust' || self.playerScore === 21) { self.stand(index); }
     } else if (user === dealer) { self.dealerScore = total; }
+    if (total === 21 && user.currentCards[index].length === 2) {
+      self.blackjacks();
+    }
   };
 
   self.blackjacks = function() {
@@ -116,12 +115,11 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     for (x in player.currentCards) {
       var total = game.pointsTotal(player.currentCards[x]);
       if ( self.dealerScore === total) { self.isADraw(); }
-      else if (total > self.dealerScore || (self.dealerScore === 'Bust' && total != 'Bust')) {
+      else if (total > self.dealerScore ||
+        (self.dealerScore === 'Bust' && total != 'Bust')) {
           self.playerWins();
         }
-      else {
-        self.result = 'You lose';
-      }
+      else { self.result = 'You lose'; }
     }
   };
 
