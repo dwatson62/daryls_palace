@@ -9,13 +9,6 @@ body {
   width: 600px;
 }
 
-#player {
-  border: solid black;
-  background-color: #00A300;
-  height: 135px;
-  width: 600px;
-}
-
 #player-buttons {
   padding-top: 5px;
   border: solid black;
@@ -35,6 +28,7 @@ body {
 }
 
 .scores {
+  border: solid black;
   text-align: center;
   margin-left: 50px;
   padding-top: 12px;
@@ -44,3 +38,11 @@ body {
   color: white;
   font-size: 64px;
 }
+
+.square {
+  position: relative;
+  border: solid white;
+  background-color: #00A300;
+  height: 135px;
+  width: 94px;
+};

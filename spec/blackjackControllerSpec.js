@@ -28,12 +28,12 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can hit', function() {
-      ctrl.hit(0);
+      ctrl.hit();
       expect(ctrl.result).toBeDefined();
     });
 
     it('player can stand, to find out the result', function() {
-      ctrl.stand(0);
+      ctrl.stand();
       expect(ctrl.result).toBeDefined();
     });
 
@@ -43,7 +43,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('can start a new round', function() {
-      ctrl.stand(0);
+      ctrl.stand();
       ctrl.startRound(10);
       expect(ctrl.playerCards[0].length).toEqual(2);
     });
@@ -59,8 +59,8 @@ describe('Blackjack Controller', function() {
     it('player can lose their bet with a lower score than the dealer', function() {
       spyOn(ctrl.game, 'dealOne').and.returnValue('D5');
       ctrl.startRound(10);
-      ctrl.hit(0);
-      ctrl.stand(0);
+      ctrl.hit();
+      ctrl.stand();
       // player stands on 15. Dealer will hit on 15 and finish with 20
       expect(ctrl.playerBalance).toEqual('£90')
       expect(ctrl.result).toEqual('You lose')
@@ -69,8 +69,8 @@ describe('Blackjack Controller', function() {
     it('player can draw and get their stake back', function() {
       spyOn(ctrl.game, 'dealOne').and.returnValue('D6');
       ctrl.startRound(10);
-      ctrl.hit(0);
-      ctrl.stand(0);
+      ctrl.hit();
+      ctrl.stand();
       expect(ctrl.playerBalance).toEqual('£100');
       expect(ctrl.result).toEqual('Draw');
     });
@@ -81,7 +81,7 @@ describe('Blackjack Controller', function() {
         return cards.splice(0, 1).join();
       });
       ctrl.startRound(10);
-      ctrl.stand(0);
+      ctrl.stand();
       // dealer stands on 17
       // player stands on 18
       expect(ctrl.result).toEqual('Player wins £20');
@@ -94,7 +94,7 @@ describe('Blackjack Controller', function() {
         return cards.splice(0, 1).join();
       });
       ctrl.startRound(10);
-      ctrl.doubleDown(0);
+      ctrl.doubleDown();
       // dealer stands on 17
       // player double downs on 13 and stands on 18
       expect(ctrl.result).toEqual('Player wins £40');
@@ -130,13 +130,13 @@ describe('Blackjack Controller', function() {
 
     it('player can hit on first split card', function() {
       ctrl.split();
-      ctrl.hit(0);
+      ctrl.hit();
       expect(ctrl.playerCards).toEqual([['D6', 'D6', 'D6'],['D6']]);
     });
 
     it('player can stand on first split card, and automatically hits on second split card', function() {
       ctrl.split();
-      ctrl.stand(0);
+      ctrl.stand();
       expect(ctrl.playerCards).toEqual([['D6', 'D6'],['D6', 'D6']]);
     });
 
@@ -157,10 +157,10 @@ describe('Blackjack Controller', function() {
       var cards = ['D7', 'D6', 'D6', 'S8', 'H6', 'D10', 'D4', 'D5', 'H5']
       setup(cards);
       ctrl.split();
-      ctrl.hit(0);
-      ctrl.stand(0);
-      ctrl.hit(1);
-      ctrl.stand(1);
+      ctrl.hit();
+      ctrl.stand();
+      ctrl.hit();
+      ctrl.stand();
       // Dealer gets 17
       // Player gets 21 and 21
       expect(ctrl.playerBalance).toEqual('£120');
@@ -170,8 +170,8 @@ describe('Blackjack Controller', function() {
       var cards = ['D7', 'D6', 'D6', 'S10', 'D10', 'D5', 'D5', 'H5']
       setup(cards);
       ctrl.split();
-      ctrl.stand(0);
-      ctrl.stand(1);
+      ctrl.stand();
+      ctrl.stand();
       // Dealer gets 17
       // Player gets 16 and 16
       expect(ctrl.playerBalance).toEqual('£80');
@@ -182,9 +182,9 @@ describe('Blackjack Controller', function() {
       var cards = ['D7', 'D6', 'D6', 'H3', 'D10', 'S10', 'D5', 'D5', 'H5']
       setup(cards);
       ctrl.split();
-      ctrl.hit(0)
-      ctrl.stand(0);
-      ctrl.stand(1);
+      ctrl.hit()
+      ctrl.stand();
+      ctrl.stand();
       // Dealer gets 17
       // Player gets 19 and 16
       expect(ctrl.playerBalance).toEqual('£100');
@@ -194,9 +194,9 @@ describe('Blackjack Controller', function() {
       var cards = ['D7', 'D6', 'D6', 'S10', 'H3', 'D10', 'D5', 'D5', 'H5']
       setup(cards);
       ctrl.split();
-      ctrl.stand(0);
-      ctrl.hit(1)
-      ctrl.stand(1);
+      ctrl.stand();
+      ctrl.hit()
+      ctrl.stand();
       // Dealer gets 17
       // Player gets 16 and 19
       expect(ctrl.playerBalance).toEqual('£100');
@@ -206,10 +206,10 @@ describe('Blackjack Controller', function() {
       var cards = ['D7', 'D6', 'D6', 'S5', 'C6', 'H6', 'D5', 'D5', 'H5']
       setup(cards);
       ctrl.split();
-      ctrl.hit(0);
-      ctrl.stand(0);
-      ctrl.hit(1);
-      ctrl.stand(1);
+      ctrl.hit();
+      ctrl.stand();
+      ctrl.hit();
+      ctrl.stand();
       // Dealer gets 17
       // Player gets 17 and 17
       expect(ctrl.playerBalance).toEqual('£100');

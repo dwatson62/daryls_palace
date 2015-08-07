@@ -4,17 +4,19 @@ blackjackGame.factory('playerFactory', function() {
     this.currentCards = [[]];
     this.balance = 100;
     this.currentBet = 0;
+    this.handIndex = 0;
   };
 
-  Player.prototype.getCard = function(game, index) {
+  Player.prototype.getCard = function(game) {
     var card = game.dealOne();
-    this.currentCards[index].push(card);
+    this.currentCards[this.handIndex].push(card);
     return card;
   };
 
   Player.prototype.clearRound = function() {
     this.currentCards = [[]];
     this.currentBet = 0;
+    this.handIndex = 0;
     return this.currentCards;
   }
 
@@ -45,11 +47,12 @@ blackjackGame.factory('playerFactory', function() {
     return this.currentCards;
   };
 
-  Player.prototype.stand = function(game, index) {
-    // if player still has a hand to bet on, this automatically hits for them
-    if (index != this.currentCards.length - 1) {
-      this.getCard(game, index + 1);
-    }
+  Player.prototype.stand = function(game) {
+    // moves to that players next hand, and hits automatically
+    if (this.handIndex != this.currentCards.length - 1) {
+      this.handIndex += 1;
+      this.getCard(game);
+    } else { return 'done' }
   };
 
   return Player;

@@ -1,3 +1,10 @@
-<span id='player-cards' ng-repeat="card in bjctrl.playerCards[0] track by $index">
-  <img class='player-cards' ng-src="/images/cards/{{card}}.png" height='130'>
-</span>
+<div class="square" style="float: left;">
+  <div id="player-cards1" ng-repeat="card in bjctrl.playerCards[0] track by $index">
+    <img class='player-cards' id="card{{$index}}" ng-src="/images/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
+  </div>
+</div>
+<div class="square" style="float: right;">
+  <div id='player-cards2' ng-repeat="card in bjctrl.playerCards[1] track by $index">
+    <img class='player-cards' id="card{{$index}}" ng-src="/images/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
+  </div>
+</div>

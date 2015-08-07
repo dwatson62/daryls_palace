@@ -5,7 +5,7 @@ Blackjack
 
 ## Synopsis
 
-Blackjack in Angular. Currently it is one player against the dealer. Player can bet different amounts, hit, stand or double down and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. The game also knows when a player can split, but the full functionality has not been implemented yet. Currently one deck is used at a time, a card gets removed from the pack when chosen and gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing.
+Blackjack in Angular. Currently it is one player against the dealer. Player can bet different amounts, hit, stand, double down or split and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. Currently one deck is used at a time, a card gets removed from the pack when chosen and gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing.
 
 ## Installation
 
@@ -36,6 +36,6 @@ For feature tests, in separate terminal windows
 
 ## Job List
 
-- [ ] Finish functionality for split bets
+- [x] Finish functionality for split bets
 - [ ] End the game at £0
 - [ ] Add test coverage

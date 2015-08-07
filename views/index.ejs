@@ -11,6 +11,12 @@
 </head>
 <body ng-controller="BlackjackController as bjctrl">
   <br>
+  <center>
+    <div id='player-buttons'>
+      <% include buttons %>
+    </div>
+  </center>
+  <br>
   <div class="row">
     <div class="col-md-4">
       <div class="scores" id='dealer-score' ng-model="bjctrl.dealerScore">
@@ -22,22 +28,12 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div id='dealer'>
-        <% include dealer %>
-      </div>
+      <% include dealer %>
       <br><br>
-      <div id='player'>
-        <% include player %>
-      </div>
-      <br>
-      <center>
-      <div id='player-buttons'>
-        <% include buttons %>
-      </div>
+      <% include player %>
     </div>
     <div class="col-md-4">
     </div>
   </div>
-  </center>
 </body>
 </html>
