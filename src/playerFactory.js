@@ -18,7 +18,7 @@ blackjackGame.factory('playerFactory', function() {
     this.currentBet = 0;
     this.handIndex = 0;
     return this.currentCards;
-  }
+  };
 
   Player.prototype.bet = function(amount) {
     this.balance -= amount;
@@ -26,7 +26,7 @@ blackjackGame.factory('playerFactory', function() {
   };
 
   Player.prototype.canDouble = function(game) {
-    var cards = this.currentCards[this.handIndex]
+    var cards = this.currentCards[this.handIndex];
     if (game.pointsTotal(cards) < 14) { return true; }
     if (cards[0].substring(1) === 'A' || cards[0].substring(1) === 'A') { return true; }
     return false;
@@ -34,13 +34,13 @@ blackjackGame.factory('playerFactory', function() {
 
   Player.prototype.doubleDown = function(game) {
     this.bet(this.currentBet);
-    var card = this.getCard(game, 0);
+    var card = this.getCard(game);
     return card;
   };
 
   Player.prototype.canSplit = function() {
     if (this.currentCards.length === 1 && this.currentCards[0].length === 2) {
-      var cards = this.currentCards[0]
+      var cards = this.currentCards[0];
       if (cards[0].substring(1) === cards[1].substring(1)) { return true; }
     }
     return false;
@@ -59,7 +59,7 @@ blackjackGame.factory('playerFactory', function() {
     if (this.handIndex != this.currentCards.length - 1) {
       this.handIndex += 1;
       this.getCard(game);
-    } else { return 'done' }
+    } else { return 'done'; }
   };
 
   return Player;

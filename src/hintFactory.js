@@ -33,34 +33,34 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineOne = function() {
-    var line = []
+    var line = [];
     this.createLoop(10, 'Hit', line);
     this.matrix.push(line);
   };
 
   Hint.prototype.lineTwo = function() {
-    var line = ['Hit']
+    var line = ['Hit'];
     this.createLoop(4, 'Double Down', line);
     this.createLoop(5, 'Hit', line);
     this.matrix.push(line);
   };
 
   Hint.prototype.lineThree = function() {
-    var line = []
+    var line = [];
     this.createLoop(8, 'Double Down', line);
     this.createLoop(2, 'Hit', line);
     this.matrix.push(line);
   };
 
   Hint.prototype.lineFour = function() {
-    var line = []
+    var line = [];
     this.createLoop(9, 'Double Down', line);
-    line.push('Hit')
+    line.push('Hit');
     this.matrix.push(line);
   };
 
   Hint.prototype.lineFive = function() {
-    var line = []
+    var line = [];
     this.createLoop(2, 'Hit', line);
     this.createLoop(3, 'Stand', line);
     this.createLoop(5, 'Hit', line);
@@ -68,7 +68,7 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineSixAndSeven = function() {
-    var line = []
+    var line = [];
     this.createLoop(5, 'Stand', line);
     this.createLoop(5, 'Hit', line);
     this.matrix.push(line);
@@ -76,7 +76,7 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineEight = function() {
-    var line = []
+    var line = [];
     this.createLoop(5, 'Stand', line);
     this.createLoop(3, 'Hit', line);
     line.push('Hit/Surrender');
@@ -85,7 +85,7 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineNine = function() {
-    var line = []
+    var line = [];
     this.createLoop(5, 'Stand', line);
     this.createLoop(2, 'Hit', line);
     this.createLoop(3, 'Hit/Surrender', line);
@@ -93,13 +93,13 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineTen = function() {
-    var line = []
+    var line = [];
     this.createLoop(10, 'Stand', line);
     this.matrix.push(line);
   };
 
   Hint.prototype.lineElevenAndTwelve = function() {
-    var line = []
+    var line = [];
     this.createLoop(3, 'Hit', line);
     this.createLoop(2, 'Double Down', line);
     this.createLoop(5, 'Hit', line);
@@ -108,7 +108,7 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.lineThirteenAndFourteen = function() {
-    var line = []
+    var line = [];
     this.createLoop(2, 'Hit', line);
     this.createLoop(3, 'Double Down', line);
     this.createLoop(5, 'Hit', line);
@@ -204,12 +204,12 @@ blackjackGame.factory('hintFactory', function() {
   };
 
   Hint.prototype.createLoop = function(size, value, line) {
-    for (x = 0; x < size; x ++) { line.push(value) }
+    for (x = 0; x < size; x ++) { line.push(value); }
   };
 
   Hint.prototype.giveHint = function(playerCards, dealerScore, game) {
     var playerScore = game.pointsTotal(playerCards);
-    if (playerScore < 9) { return 'Hit' }
+    if (playerScore < 9) { return 'Hit'; }
     var y = (dealerScore - 2);
     var x;
     if (this.checkForAces(playerCards, game) === true) {
@@ -219,12 +219,12 @@ blackjackGame.factory('hintFactory', function() {
     } else {
       x = playerScore - 8;
     }
-    return this.matrix[x][y]
+    return this.matrix[x][y];
   };
 
   Hint.prototype.checkForAces = function(playerCards, game) {
     if (playerCards.length > 2) { return false; }
-    for (x in playerCards) {
+    for (var x in playerCards) {
       if (game.cardValue(playerCards[x]) === 11) { return true; }
     }
   };

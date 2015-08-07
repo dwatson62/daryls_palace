@@ -8,7 +8,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.game = game;
   self.playerBalance = '£' + player.balance;
-  self.cardCountingTotal = 0
+  self.cardCountingTotal = 0;
 
     // This method is only used for developing the split functionality
     // It returns two duplicate value cards for the player
@@ -20,11 +20,11 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     //   self.playerTurn = true;
     //   self.bet(10);
     //   // dealer gets D3
-    //   dealer.currentCards = [[game.deck[1]]]
+    //   dealer.currentCards = [[game.deck[1]]];
     //   self.dealerCards = dealer.currentCards;
     //   self.calculateScore(dealer);
     //   // returns D5 and H5
-    //   player.currentCards = [[game.deck[3], game.deck[16]]]
+    //   player.currentCards = [[game.deck[3], game.deck[16]]];
     //   self.playerCards = player.currentCards;
     //   self.calculateScore(player);
     // };
@@ -37,15 +37,15 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     if (game.deck.length < 12) {
       game.createDeck();
       self.displayHint = 'Shuffling the shoe';
-      self.cardCountingTotal = 0
+      self.cardCountingTotal = 0;
     }
   };
 
   self.cardCounting = function(card) {
     var value = game.cardValue(card);
-    if (value <= 6) { self.cardCountingTotal += 1 }
-    if (value >= 10) { self.cardCountingTotal -= 1 }
-    console.log(self.cardCountingTotal)
+    if (value <= 6) { self.cardCountingTotal += 1; }
+    if (value >= 10) { self.cardCountingTotal -= 1; }
+    console.log(self.cardCountingTotal);
   };
 
   self.showDoubleDownButton = function() {
@@ -110,7 +110,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.stand = function() {
     // next player turn
     self.displayHint = null;
-    var result = player.stand(game)
+    var result = player.stand(game);
     self.calculateScore(player);
     if (result === 'done') {
       self.playerTurn = false;
@@ -136,10 +136,12 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.calculateScore = function(user) {
     var cards = user.currentCards[user.handIndex];
-    var total = game.pointsTotal(cards)
+    var total = game.pointsTotal(cards);
     if (user === player) {
       self.playerScore = total;
-    } else if (user === dealer) { self.dealerScore = total; }
+    } else if (user === dealer) {
+      self.dealerScore = total;
+    }
     if (total === 21 && user.currentCards[user.handIndex].length === 2) {
       self.blackjacks();
     }
@@ -153,7 +155,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   };
 
   self.determineWinner = function() {
-    for (x in player.currentCards) {
+    for (var x in player.currentCards) {
       var total = game.pointsTotal(player.currentCards[x]);
       if ( self.dealerScore === total) { self.isADraw(); }
       else if (total > self.dealerScore ||
@@ -179,7 +181,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.giveHint = function() {
     self.calculateScore(dealer);
-    var cards = self.playerCards[player.handIndex]
+    var cards = self.playerCards[player.handIndex];
     self.displayHint = hint.giveHint(cards, self.dealerScore, game);
   };
 

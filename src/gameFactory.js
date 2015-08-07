@@ -6,21 +6,21 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.createDeck = function() {
-    this.deck = []
+    this.deck = [];
     var suits = ["D", "H", "C", "S"];
     // creates a shoe with four decks
     for (i = 0; i < 1; i ++) {
-      for(x in suits) { this.createSuit(suits[x]); }
+      for(var x in suits) { this.createSuit(suits[x]); }
     }
   };
 
   Game.prototype.createSuit = function(suit) {
-    for (x = 2; x < 11; x ++) {
-      number = x.toString();
-      this.deck.push(suit + number)
+    for (var i = 2; i < 11; i ++) {
+      number = i.toString();
+      this.deck.push(suit + number);
     }
     var faces = ["J", "Q", "K", "A"];
-    for (x in faces) { this.deck.push(suit + faces[x]); }
+    for (var x in faces) { this.deck.push(suit + faces[x]); }
   };
 
   Game.prototype.dealOne = function() {
@@ -43,14 +43,14 @@ blackjackGame.factory('gameFactory', function() {
   Game.prototype.pointsTotal = function(cards) {
     var total = 0;
     var aceCount = 0;
-    for (x in cards) {
+    for (var x in cards) {
       if (this.cardValue(cards[x]) == 11) { aceCount += 1; }
       total += this.cardValue(cards[x]);
       if (total > 21 && aceCount > 0) {
         total -= 10;
         aceCount -= 1;
       }
-      if (total > 21 && aceCount == 0) { return 'Bust'; }
+      if (total > 21 && aceCount === 0) { return 'Bust'; }
     }
     return total;
   };
@@ -67,7 +67,7 @@ blackjackGame.factory('gameFactory', function() {
   };
 
   Game.prototype.blackjack = function(player) {
-    var winnings = (player.currentBet * 2.5) + player.currentBet
+    var winnings = (player.currentBet * 2.5) + player.currentBet;
     player.balance += winnings;
     return winnings;
   };
