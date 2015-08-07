@@ -3,7 +3,7 @@ Blackjack
 
 [![Build Status](https://travis-ci.org/dwatson62/blackjack.svg?branch=master)](https://travis-ci.org/dwatson62/blackjack)
 
-![Blackjack](https://github.com/dwatson62/blackjack/blob/master/public/images/blackjack.png)
+![Blackjack](https://github.com/dwatson62/blackjack/blob/master/public/images/screenshot.png)
 
 ## Synopsis
 
