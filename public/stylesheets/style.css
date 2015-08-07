@@ -3,10 +3,13 @@ body {
 }
 
 #dealer {
+  position: relative;
+  z-index: auto;
   border: solid black;
   background-color: #00A300;
-  height: 135px;
-  width: 600px;
+  height: 240px;
+  width: 610px;
+  border-radius: 100px;
 }
 
 #player-buttons {

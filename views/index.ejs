@@ -2,6 +2,7 @@
 <head>
   <title>Blackjack</title>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
   <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="src/app.js"></script>
@@ -11,14 +12,14 @@
 </head>
 <body ng-controller="BlackjackController as bjctrl">
   <br>
-  <center>
-    <div id='player-buttons'>
-      <% include buttons %>
-    </div>
-  </center>
-  <br>
   <div class="row">
     <div class="col-md-4">
+      <center>
+        <div id='player-buttons'>
+          <% include buttons %>
+        </div>
+      </center>
+      <br>
       <div class="scores" id='dealer-score' ng-model="bjctrl.dealerScore">
         {{bjctrl.dealerScore}}
       </div>
