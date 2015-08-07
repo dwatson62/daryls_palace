@@ -46,6 +46,7 @@ blackjackGame.factory('playerFactory', function() {
   };
 
   Player.prototype.stand = function(game, index) {
+    // if player still has a hand to bet on, this automatically hits for them
     if (index != this.currentCards.length - 1) {
       this.getCard(game, index + 1);
     }

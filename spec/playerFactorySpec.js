@@ -53,7 +53,6 @@ describe('Player Factory', function() {
   });
 
   it('can double down below 14 and get 1 more card', function() {
-    // returns D6
     spyOn(game, 'dealOne').and.returnValue('D6')
     player.getCard(game, 0);
     player.getCard(game, 0);
@@ -87,7 +86,6 @@ describe('Player Factory', function() {
     it('can stand on a split and receive that total', function() {
       player.split();
       player.getCard(game, 0);
-      game.createDeck();
       player.stand(game, 0);
       expect(game.pointsTotal(player.currentCards[0])).toEqual(16);
     });
@@ -95,7 +93,6 @@ describe('Player Factory', function() {
     it('when stands on a first split card, automatically hit on the next', function() {
       player.split();
       player.getCard(game, 0);
-      game.createDeck();
       player.stand(game, 0);
       expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8']]);
     });
@@ -103,14 +100,11 @@ describe('Player Factory', function() {
     it('can stand on a split and hit on the next split card', function() {
       player.split();
       player.getCard(game, 0);
-      game.createDeck();
       player.stand(game, 0);
-      game.createDeck();
       player.getCard(game, 1);
       expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8', 'D8']]);
     });
 
-
-    });
+  });
 
 });

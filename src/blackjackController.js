@@ -90,6 +90,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.split = function() {
     self.playerCards = player.split();
     self.playerBalance = '£' + player.balance;
+    // console.log(self.playerCards)
     self.hit(0);
   };
 
@@ -113,6 +114,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.determineWinner = function() {
     for (x in player.currentCards) {
+      // console.log(player.currentCards[x])
       var total = game.pointsTotal(player.currentCards[x]);
       if ( self.dealerScore === total) { self.isADraw(); }
       else if (total > self.dealerScore ||
