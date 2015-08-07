@@ -32,8 +32,8 @@ blackjackGame.factory('playerFactory', function() {
   };
 
   Player.prototype.canSplit = function(game) {
-    var cards = this.currentCards[0]
-    if (cards.length === 2) {
+    if (this.currentCards.length === 1 && this.currentCards[0].length === 2) {
+      var cards = this.currentCards[0]
       if (cards[0].substring(1) === cards[1].substring(1)) { return true; }
     }
     return false;

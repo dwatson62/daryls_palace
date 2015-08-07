@@ -72,6 +72,12 @@ describe('Player Factory', function() {
       expect(player.canSplit()).toEqual(true);
     });
 
+    it('cannot split more than once', function() {
+      player.split();
+      player.getCard(game);
+      expect(player.canSplit()).toEqual(false);
+    });
+
     it('can split and get an extra card', function() {
       player.split();
       expect(player.currentCards).toEqual([['D8'], ['D8']])

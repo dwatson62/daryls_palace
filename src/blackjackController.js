@@ -44,8 +44,8 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.playerTurn = true;
     self.bet(amount);
     self.dealerHit();
-    self.hit(0);
-    self.hit(0);
+    self.hit();
+    self.hit();
   };
 
   self.clearPreviousRound = function() {
@@ -64,7 +64,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.dealerHit = function() {
     dealer.getCard(game, 0);
     self.dealerCards = dealer.currentCards;
-    self.calculateScore(dealer, 0);
+    self.calculateScore(dealer);
   };
 
   self.dealersTurn = function() {
@@ -76,13 +76,14 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.hit = function() {
     player.getCard(game);
     self.playerCards = player.currentCards;
-    self.calculateScore(player, 0);
+    self.calculateScore(player);
     if (self.playerScore == 'Bust' || self.playerScore === 21) { self.stand(); }
   };
 
   self.stand = function() {
     // next player turn
     var result = player.stand(game)
+    self.calculateScore(player);
     if (result === 'done') {
       self.playerTurn = false;
       self.dealersTurn();
@@ -94,13 +95,13 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.playerCards = player.currentCards;
     self.calculateScore(player);
     self.playerBalance = '£' + player.balance;
-    self.stand(0);
+    self.stand();
   };
 
   self.split = function() {
     self.playerCards = player.split();
     self.playerBalance = '£' + player.balance;
-    self.hit(0);
+    self.hit();
   };
 
   self.calculateScore = function(user) {
@@ -109,7 +110,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     if (user === player) {
       self.playerScore = total;
     } else if (user === dealer) { self.dealerScore = total; }
-    if (total === 21 && user.currentCards[handIndex].length === 2) {
+    if (total === 21 && user.currentCards[user.handIndex].length === 2) {
       self.blackjacks();
     }
   };
