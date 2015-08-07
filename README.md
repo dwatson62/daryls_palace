@@ -3,9 +3,17 @@ Blackjack
 
 [![Build Status](https://travis-ci.org/dwatson62/blackjack.svg?branch=master)](https://travis-ci.org/dwatson62/blackjack)
 
+![Blackjack](https://github.com/dwatson62/blackjack/blob/master/public/images/blackjack.png)
+
 ## Synopsis
 
-Blackjack in Angular. Currently it is one player against the dealer. Player can bet different amounts, hit, stand, double down or split and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. Currently one deck is used at a time, a card gets removed from the pack when chosen and gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing.
+Blackjack in Angular.
+
+Currently it is a one player game against the dealer for play money. Player can bet different amounts, hit, stand, double down or split and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. The shoe is four decks by default, and it gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing. To assist the player in beating the dealer, there is a show hint button which tells the player the best move to make based on basic blackjack strategy:
+
+![Blackjack-chart](https://github.com/dwatson62/blackjack/blob/master/public/images/blackjack-chart.gif)
+
+Also, if you wish to count cards, just open the console (-1 for <= 7 and +1 for 10's and Aces).
 
 ## Installation
 
@@ -36,6 +44,6 @@ For feature tests, in separate terminal windows
 
 ## Job List
 
-- [x] Finish functionality for split bets
+- [ ] More styling
 - [ ] End the game at £0
 - [ ] Add test coverage

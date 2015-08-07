@@ -42,8 +42,8 @@ describe('Blackjack', function() {
 
   it('displays player and dealer score', function() {
     bet10.click();
-    expect(playerScore.isPresent()).toBeTruthy;
-    expect(dealerScore.isPresent()).toBeTruthy;
+    expect(playerScore.isPresent()).toBeTruthy();
+    expect(dealerScore.isPresent()).toBeTruthy();
   });
 
   it('displays player balance', function() {
@@ -52,15 +52,16 @@ describe('Blackjack', function() {
 
   it('displays result after the game', function() {
     bet10.click();
-    standbtn.click();
-    expect(result.isPresent()).toBeTruthy;
+    // This prevents the tests from crashing if a blackjack is scored
+    if (standbtn.isPresent() === true) { standbtn.click(); }
+    expect(result.isPresent()).toBeTruthy();
   });
 
   it('has the option to play a new game', function() {
-    // currently causes an error if a blackjack is scored
     bet10.click();
-    standbtn.click();
-    expect(bet10.isPresent()).toBeTruthy;
+    // This prevents the tests from crashing if a blackjack is scored
+    if (standbtn.isPresent() === true) { standbtn.click(); }
+    expect(bet10.isPresent()).toBeTruthy();
   });
 
 });

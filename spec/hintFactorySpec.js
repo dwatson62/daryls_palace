@@ -9,12 +9,12 @@ describe('Hint Factory', function() {
     game = new gameFactory();
   }));
 
-  xit('is defined', function() {
+  it('is defined', function() {
     expect(hint).toBeDefined();
   });
 
-  xit('each line has 10 elements', function() {
-    for (x in hint.matrix) {
+  it('each line has 10 elements', function() {
+    for (var x in hint.matrix) {
       expect(hint.matrix[x].length).toEqual(10);
     }
   });

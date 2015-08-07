@@ -62,8 +62,8 @@ describe('Blackjack Controller', function() {
       ctrl.hit();
       ctrl.stand();
       // player stands on 15. Dealer will hit on 15 and finish with 20
-      expect(ctrl.playerBalance).toEqual('£90')
-      expect(ctrl.result).toEqual('You lose')
+      expect(ctrl.playerBalance).toEqual('£90');
+      expect(ctrl.result).toEqual('You lose');
     });
 
     it('player can draw and get their stake back', function() {
@@ -76,7 +76,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can win and double their stake', function() {
-      var cards = ['D6', 'D8', 'D10', 'D5', 'D6']
+      var cards = ['D6', 'D8', 'D10', 'D5', 'D6'];
       spyOn(ctrl.game, 'dealOne').and.callFake(function() {
         return cards.splice(0, 1).join();
       });
@@ -89,7 +89,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can double down and win 4x original stake', function() {
-      var cards = ['D6', 'D8', 'D5', 'D5', 'D5', 'D6']
+      var cards = ['D6', 'D8', 'D5', 'D5', 'D5', 'D6'];
       spyOn(ctrl.game, 'dealOne').and.callFake(function() {
         return cards.splice(0, 1).join();
       });
@@ -154,7 +154,7 @@ describe('Blackjack Controller', function() {
     };
 
     it('player can win on all split bets', function() {
-      var cards = ['D7', 'D6', 'D6', 'S8', 'H6', 'D10', 'D4', 'D5', 'H5']
+      var cards = ['D7', 'D6', 'D6', 'S8', 'H6', 'D10', 'D4', 'D5', 'H5'];
       setup(cards);
       ctrl.split();
       ctrl.hit();
@@ -167,7 +167,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can lose on all split bets', function() {
-      var cards = ['D7', 'D6', 'D6', 'S10', 'D10', 'D5', 'D5', 'H5']
+      var cards = ['D7', 'D6', 'D6', 'S10', 'D10', 'D5', 'D5', 'H5'];
       setup(cards);
       ctrl.split();
       ctrl.stand();
@@ -179,10 +179,10 @@ describe('Blackjack Controller', function() {
     });
 
     it('player wins on first split and loses on second', function() {
-      var cards = ['D7', 'D6', 'D6', 'H3', 'D10', 'S10', 'D5', 'D5', 'H5']
+      var cards = ['D7', 'D6', 'D6', 'H3', 'D10', 'S10', 'D5', 'D5', 'H5'];
       setup(cards);
       ctrl.split();
-      ctrl.hit()
+      ctrl.hit();
       ctrl.stand();
       ctrl.stand();
       // Dealer gets 17
@@ -191,11 +191,11 @@ describe('Blackjack Controller', function() {
     });
 
     it('player loses on first split and wins on second', function() {
-      var cards = ['D7', 'D6', 'D6', 'S10', 'H3', 'D10', 'D5', 'D5', 'H5']
+      var cards = ['D7', 'D6', 'D6', 'S10', 'H3', 'D10', 'D5', 'D5', 'H5'];
       setup(cards);
       ctrl.split();
       ctrl.stand();
-      ctrl.hit()
+      ctrl.hit();
       ctrl.stand();
       // Dealer gets 17
       // Player gets 16 and 19
@@ -203,7 +203,7 @@ describe('Blackjack Controller', function() {
     });
 
     it('player can draw with dealer on all split bets', function() {
-      var cards = ['D7', 'D6', 'D6', 'S5', 'C6', 'H6', 'D5', 'D5', 'H5']
+      var cards = ['D7', 'D6', 'D6', 'S5', 'C6', 'H6', 'D5', 'D5', 'H5'];
       setup(cards);
       ctrl.split();
       ctrl.hit();

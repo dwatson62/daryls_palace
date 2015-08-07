@@ -2,7 +2,11 @@
 <button class="bet-btns" id='bet10-btn' ng-click="bjctrl.startRound(5)" ng-hide="bjctrl.playerTurn">£5</button>
 <button class="bet-btns" id='bet10-btn' ng-click="bjctrl.startRound(10)" ng-hide="bjctrl.playerTurn">£10</button>
 <button class="bet-btns" id='bet10-btn' ng-click="bjctrl.startRound(20)" ng-hide="bjctrl.playerTurn">£20</button>
-<button class="player-btn" id='stand-btn' ng-click="bjctrl.gimmeASplit()" ng-hide="bjctrl.playerTurn">Gimme a split</button>
+
+  <!-- This is used for developing split functionality -->
+
+  <!-- <button class="player-btn" ng-click="bjctrl.gimmeASplit()" ng-hide="bjctrl.playerTurn">Gimme a split</button> -->
+
 <button class="player-btn" id='hit-btn' ng-click="bjctrl.hit()" ng-show="bjctrl.playerTurn">Hit me</button>
 <button class="player-btn" id='stand-btn' ng-click="bjctrl.stand()" ng-show="bjctrl.playerTurn">Stand</button>
 <button class="player-btn" id='dbl-down-btn' ng-click="bjctrl.doubleDown()" ng-show="bjctrl.showDoubleDownButton()">Double Down</button>
