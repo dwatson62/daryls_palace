@@ -7,7 +7,7 @@ Blackjack
 
 ## Synopsis
 
-Blackjack in Angular.
+Blackjack in Angular. Available on Heroku: [(https://blackjack62.herokuapp.com/)] (https://blackjack62.herokuapp.com/)
 
 Currently it is a one player game against the dealer for play money. Player can bet different amounts, hit, stand, double down or split and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. The shoe is four decks by default, and it gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing. To assist the player in beating the dealer, there is a show hint button which tells the player the best move to make based on basic blackjack strategy:
 
