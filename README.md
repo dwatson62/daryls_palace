@@ -1,25 +1,22 @@
-Blackjack
+Daryl's Palace
 =======================
 
-[![Build Status](https://travis-ci.org/dwatson62/blackjack.svg?branch=master)](https://travis-ci.org/dwatson62/blackjack)
-
-![Blackjack](https://github.com/dwatson62/blackjack/blob/master/public/images/screenshot.png)
+[![Build Status](https://travis-ci.org/dwatson62/daryls_palace.svg?branch=master)](https://travis-ci.org/dwatson62/daryls_palace) [![Code Climate](https://codeclimate.com/github/dwatson62/daryls_palace/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/daryls_palace)
 
 ## Synopsis
 
-Blackjack in Angular. Available on Heroku: [(https://blackjack62.herokuapp.com/)] (https://blackjack62.herokuapp.com/)
+This is a merge between two earlier projects:
 
-Currently it is a one player game against the dealer for play money. Player can bet different amounts, hit, stand, double down or split and win extra for a blackjack. Dealer knows to stand on 17 and hit up to 16. The shoe is four decks by default, and it gets shuffled once there is less than 12 cards left. Can also allow for cards not to be removed from the pack, which is useful for testing. To assist the player in beating the dealer, there is a show hint button which tells the player the best move to make based on basic blackjack strategy:
+[(https://github.com/dwatson62/blackjack)](https://github.com/dwatson62/blackjack)
+[(https://github.com/dwatson62/roulette)](https://github.com/dwatson62/roulette)
 
-![Blackjack-chart](https://github.com/dwatson62/blackjack/blob/master/public/images/blackjack-chart.gif)
-
-Also, if you wish to count cards, just open the console (-1 for <= 7 and +1 for 10's and Aces).
+Daryl's Palace is a casino currently with two games, Blackjack and Roulette. Specific documentation for each game is available at the above links. In the future I would like to add more games to this list.
 
 ## Installation
 
 From the command line:
 
-- ``` git clone https://github.com/dwatson62/blackjack ```
+- ``` git clone https://github.com/dwatson62/daryls_palace ```
 - ``` npm start ``` (this will download all npm and bower packages, and launch the server)
 - Visit [http://localhost:3000](http://localhost:3000)
 
@@ -33,7 +30,8 @@ For feature tests, in separate terminal windows
 
 - ``` npm start ```
 - ``` webdriver-manager update ``` then ``` webdriver-manager start ```
-- ``` protractor spec/e2e/conf.js ```
+- ``` protractor spec/blackjack/e2e/conf.js ``` to test Blackjack
+- ``` protractor spec/roulette/e2e/conf.js ``` to test Roulette
 
 ## Technologies Used
 
@@ -44,6 +42,7 @@ For feature tests, in separate terminal windows
 
 ## Job List
 
-- [ ] More styling
-- [ ] End the game at £0
+- [ ] Styling main page
+- [ ] Add MongoDB to store player information
+- [ ] Allow player balance to be used across both game
 - [ ] Add test coverage

@@ -1,0 +1,18 @@
+<div class='display'>
+  <h3><p><div id='display-msg' ng-model='rltCtrl.message'>{{rltCtrl.message}} </div></p></h3>
+  <div id='£1bet-btn' ng-class="{'inactive': rltCtrl.inactiveChips[0]}" ng-disabled="rltCtrl.playerBalance < 1" ng-click='rltCtrl.placeBet(1, 0)'>£1<img src='/images/roulette/chip.gif' height='40'></div>
+  <div id='£5bet-btn' ng-class="{'inactive': rltCtrl.inactiveChips[1]}" ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.placeBet(5, 1)'>£5<img src='/images/roulette/chip.gif' height='40'></div>
+  <div id='£10bet-btn' ng-class="{'inactive': rltCtrl.inactiveChips[2]}" ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.placeBet(10, 2)'>£10<img src='/images/roulette/chip.gif' height='40'></div>
+  <div id='£20bet-btn' ng-class="{'inactive': rltCtrl.inactiveChips[3]}" ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.placeBet(20, 3)'>£20<img src='/images/roulette/chip.gif' height='40'></div>
+  <div id='player-balance' ng-model='rltCtrl.playerBalance'> Your balance: £{{rltCtrl.playerBalance}}</div>
+  <div id='amount-bet' ng-model='rltCtrl.totalBet'>Total bet: £{{rltCtrl.totalBet}}</div>
+  <div id='previous-result' ng-model="rltCtrl.number">Last number: {{rltCtrl.number}}</div>
+  <div id='winnings' ng-model='rltCtrl.winnings'>Your winnings: £{{rltCtrl.winnings}}</div>
+  Your bets:<div id='player-bet' ng-repeat='bets in rltCtrl.bet'><li> £{{bets.amount}} on {{bets.bet}} </li></div>
+  <br>
+  <br>
+  <button class='player-btns' id='repeat-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.repeatBet()'>Repeat</button>
+  <button class='player-btns' id='clear-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.clearBets()'>Clear Bets</button>
+  <br>
+  <br>
+</div>

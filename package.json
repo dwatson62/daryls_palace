@@ -15,8 +15,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.1",
     "express": "~4.12.4",
-    "morgan": "~1.5.3",
-    "serve-favicon": "~2.2.1"
+    "morgan": "~1.5.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -28,6 +27,7 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.0",
     "phantomjs": "^1.9.17",
-    "protractor": "^2.1.0"
+    "protractor": "^2.1.0",
+    "webdriver-manager": "^7.0.1"
   }
 }

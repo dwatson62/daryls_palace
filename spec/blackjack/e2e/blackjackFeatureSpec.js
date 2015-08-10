@@ -1,5 +1,5 @@
 beforeEach(function(){
-  browser.get('http://localhost:3000');
+  browser.get('http://localhost:3000/blackjack');
 });
 
 var bet10 = element(by.id('bet10-btn'));

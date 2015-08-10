@@ -1,0 +1,138 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("/images/roulette/background.jpg");
+}
+
+.container {
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+.zero-btn {
+  text-align: center;
+  width: 30px;
+  font-size: 22px;
+  background-color: green;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.rednumber-btn {
+  font-size: 20px;
+  width: 32px;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+.blacknumber-btn {
+  font-size: 20px;
+  width: 32px;
+  background-color: black;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+#red-btn {
+  font-size: 18px;
+  width: 70px;
+  background-color: red;
+  color: white;
+  border-style: none;
+  border-radius: 10px;
+}
+
+#black-btn {
+  font-size: 18px;
+  width: 70px;
+  background-color: black;
+  color: white;
+  border-style: none;
+  border-radius: 10px;
+}
+
+.wheel {
+  background-color: green;
+  outline: black solid thick;
+}
+
+.display {
+  background-color: green;
+  outline: black solid thick;
+  font-size: 18px;
+}
+
+.column-btn {
+  font-size: 18px;
+  border-style: none;
+  color: white;
+  background-color: green;
+  height: 5px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+.oddeven-btn {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  width: 70px;
+  color: white;
+}
+
+.highlow-btn {
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  width: 70px;
+  color: white;
+}
+
+.doz-btn {
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  width: 130px;
+  color: white;
+}
+
+.history {
+  background-color: green;
+  outline: black solid thick;
+}
+
+td {
+  text-align: center;
+}
+
+.player-btns {
+  font-size: 16px;
+  background-color: transparent;
+  /*border: none;*/
+  width: 70px;
+  color: black;
+}
+
+.inactive {
+  opacity: 0.4;
+}
+
+li {
+  font-size: 16px;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0; }
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; border-color: white;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; border-color: white;}
+#no-border{border-style:none;}

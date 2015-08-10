@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class='history'>
+        <h3>Your previous bet:</h3><div id='previous-bet' ng-repeat='previousBet in rltCtrl.previousBet'>£{{previousBet.amount}} on {{previousBet.bet}}</div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class='history'>
+        <h3>Spin History: </h3><div id='past-spins' ng-repeat='pastSpins in rltCtrl.pastSpins | orderBy:"-"'><li>{{pastSpins.number}} {{pastSpins.colour}}</li></div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

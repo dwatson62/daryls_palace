@@ -1,8 +1,11 @@
+// Karma configuration
+// Generated on Mon Aug 03 2015 15:44:42 GMT+0100 (BST)
+
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../',
+    basePath: '../../',
 
 
     // frameworks to use
@@ -14,10 +17,8 @@ module.exports = function(config) {
     files: [
         'bower_components/angular/angular.js',
         'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/jquery-ui/jquery-ui.js',
-        'src/*/*.js',
-        'spec/*/*.js'
+        'src/blackjack/*.js',
+        'spec/blackjack/*.js'
     ],
 
 

@@ -1,0 +1,11 @@
+<div id="dealer">
+  <span style="position: absolute" id='dealer-cards' ng-repeat="card in bjctrl.dealerCards[0] track by $index">
+    <img class="dealer-cards" style="position: absolute; z-index: {{$index}}; left:{{($index * 70) + 200}}px;" ng-src="/images/blackjack/cards/{{card}}.png" height='130'>
+    <img id="dealer-second-card" style="position: absolute; z-index: 1; left:250px;"src="/images/blackjack/cards/FD.jpg" height="130" ng-hide="bjctrl.dealerTurn">
+  </span>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div style="float: left;"><img src="/images/blackjack/table-text-clear.png" width='600'></div>
+</div>

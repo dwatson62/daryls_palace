@@ -1,0 +1,44 @@
+<br>
+<table class="tg">
+  <tr>
+    <th class="tg-031e" rowspan="3"><button class='zero-btn' id='0' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.numberBet(0)'>0</button></th>
+    <% for (i = 3; i < 37; i += 3) { %>
+        <th class="tg-031e">
+          <button ng-class='rltCtrl.blackOrRedBtn(<%= i %>, 0)' id='<%= i %>' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.numberBet(<%= i %>)'><%= i %></button>
+        </th>
+      <% } %>
+      <td class="tg-031e"><button class='column-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.columnBet("Column 3")'>2 to 1</button></td>
+  </tr>
+  <tr>
+    <% for (i = 2; i < 37; i += 3) { %>
+        <th class="tg-031e">
+          <button ng-class='rltCtrl.blackOrRedBtn(<%= i %>, 1)' id='<%= i %>' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.numberBet(<%= i %>)'><%= i %></button>
+        </th>
+      <% } %>
+      <td class="tg-031e"><button class='column-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.columnBet("Column 2")'>2 to 1</button></td>
+  </tr>
+  <tr>
+    <% for (i = 1; i < 37; i += 3) { %>
+        <th class="tg-031e">
+          <button ng-class='rltCtrl.blackOrRedBtn(<%= i %>, 2)' id='<%= i %>' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.numberBet(<%= i %>)'><%= i %></button>
+        </th>
+      <% } %>
+      <td class="tg-031e"><button class='column-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.columnBet("Column 1")'>2 to 1</button></td>
+  </tr>
+  <tr>
+    <td class="tg-031e" rowspan="2" id='no-border'></td>
+    <td class="tg-031e" colspan="4"><button class='doz-btn' id='1st12-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.dozenBet("Dozen 1")'>1st 12</button></td>
+    <td class="tg-031e" colspan="4"><button class='doz-btn' id='2nd12-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.dozenBet("Dozen 2")'>2nd 12</button></td>
+    <td class="tg-031e" colspan="4"><button class='doz-btn' id='3rd12-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.dozenBet("Dozen 3")'>3rd 12</button></td>
+    <td class="tg-031e" rowspan="2" id='no-border'></td>
+  </tr>
+  <tr>
+    <td class="tg-031e" colspan="2"><button class='highlow-btn' id='1to18-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.highLowBet("1 - 18")'>1 to 18</button></td>
+    <td class="tg-031e" colspan="2"><button class='oddeven-btn' id='even-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.oddOrEvenBet("Even")'>EVEN</button></td>
+    <td class="tg-031e" colspan="2"><button id='red-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.colourBet("Red")'>RED</button></td>
+    <td class="tg-031e" colspan="2"><button id='black-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.colourBet("Black")'>BLACK</button></td>
+    <td class="tg-031e" colspan="2"><button class='oddeven-btn' id='odd-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.oddOrEvenBet("Odd")'>ODD</button></td>
+    <td class="tg-031e" colspan="2"><button class='highlow-btn' id='19to36-btn' ng-disabled="rltCtrl.disableButton()" ng-click='rltCtrl.highLowBet("19 - 36")'>19 to 36</button></td>
+  </tr>
+</table>
+<br>

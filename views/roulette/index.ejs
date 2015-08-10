@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='Roulette'>
+  <head>
+    <title>Roulette</title>
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/roulette-style.css' />
+    <script src='bower_components/angular/angular.js'></script>
+    <script src='bower_components/jquery/dist/jquery.js'></script>
+    <script src='src/roulette/angularApp.js'></script>
+    <script src='src/roulette/playerFactory.js'></script>
+    <script src='src/roulette/wheelFactory.js'></script>
+    <script src='src/roulette/rouletteController.js'></script>
+  </head>
+  <body ng-controller='RouletteController as rltCtrl'><center>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <br>
+          <div class='wheel'><% include table %></div>
+          <% include spinHistory %>
+        </div>
+        <div class="col-md-4"><% include display %></div>
+      </div>
+    </div>
+  </center>
+</body>
+</html>
