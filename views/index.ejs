@@ -7,23 +7,37 @@
   Welcome to Daryl's casino
   <a href="/blackjack">Blackjack</a>
   <a href="/roulette">Roulette</a>
-  Please Sign in here:
 
-  <form action='/login' method='post'>
-    <input type="text" name="username" placeholder="Enter your username..."/>
-    <input type="text" name="password" placeholder="Enter your password..."/>
-    <button type="submit">Submit</button>
-  </form>
+  <% if (user) { %>
+    You are logged in as <%= user.email %>
 
-  Register here:
-  <form action='/signup' method='post'>
-    <input type="text" name="username" placeholder="Enter your username..."/>
-    <input type="text" name="email" placeholder="Enter your email..."/>
-    <input type="text" name="password" placeholder="Enter your password..."/>
-    <button type="submit">Submit</button>
-  </form>
+    <a href="/signout">Sign out</a>
+
+ <% } else { %>
+
+    Please Sign in here:
+
+    <form action='/login' method='post'>
+      <input type="text" name="username" placeholder="Enter your username..."/>
+      <input type="text" name="password" placeholder="Enter your password..."/>
+      <button type="submit">Submit</button>
+    </form>
+
+    Register here:
+    <form action='/signup' method='post'>
+      <input type="text" name="username" placeholder="Enter your username..."/>
+      <input type="text" name="email" placeholder="Enter your email..."/>
+      <input type="text" name="password" placeholder="Enter your password..."/>
+      <button type="submit">Submit</button>
+    </form>
+
+  <% } %>
+
   <% if (message) { %>
     <p class="message"><%= message %></p>
   <% } %>
+
+
+
 </body>
 </html>
