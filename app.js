@@ -13,10 +13,22 @@ mongoose.connect('mongodb://localhost/darylsPalace', function(err) {
   }
 });
 
+var app = express();
+
+var passport = require('passport');
+var expressSession = require('express-session');
+// app.use(expressSession({ secret: 'mySecretKey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+var flash = require('connect-flash');
+app.use(flash());
+
+var initPassport = require('./passport/init');
+initPassport(passport);
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
 
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log('Server starting on port 3000');

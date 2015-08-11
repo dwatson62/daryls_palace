@@ -7,12 +7,22 @@
   <script src="src/welcome/welcomeController.js"></script>
 </head>
 <body ng-controller="welcomeController as wellCtrl">
-  <button type="submit" ng-click="wellCtrl.test()">Test Me</button>
   Welcome to Daryl's casino
   <a href="/blackjack">Blackjack</a>
   <a href="/roulette">Roulette</a>
-  <form ng-submit="wellCtrl.newUser()">
-    <input type="text" ng-model="wellCtrl.name" name="name" placeholder="Enter your name..."/>
+  Please Sign in here:
+
+  <form ng-submit="wellCtrl.login()">
+    <input type="text" ng-model="wellCtrl.email" name="email" placeholder="Enter your email..."/>
+    <input type="text" ng-model="wellCtrl.password" name="password" placeholder="Enter your password..."/>
+    <button type="submit">Submit</button>
+  </form>
+
+  Register here:
+  <form action='/signup' method='post'>
+    <input type="text" name="username" placeholder="Enter your username..."/>
+    <input type="text" name="email" placeholder="Enter your email..."/>
+    <input type="text" name="password" placeholder="Enter your password..."/>
     <button type="submit">Submit</button>
   </form>
 </body>

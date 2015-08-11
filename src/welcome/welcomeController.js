@@ -7,7 +7,9 @@ welcome.controller('welcomeController', ['$http', function($http) {
       url: "/users",
       method: 'POST',
       data: {
-        name: self.name
+        username: self.username,
+        email: self.email,
+        password: self.password
       }
     });
 
