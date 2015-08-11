@@ -31,8 +31,8 @@ module.exports = function(passport){
             newUser.username = username;
             newUser.password = createHash(password);
             newUser.email = req.param('email');
-            newUser.firstName = req.param('firstName');
-            newUser.lastName = req.param('lastName');
+            // newUser.firstName = req.param('firstName');
+            // newUser.lastName = req.param('lastName');
 
             // save the user
             newUser.save(function(err) {
@@ -41,7 +41,7 @@ module.exports = function(passport){
                 throw err;
               }
               console.log('User Registration succesful');
-              return done(null, newUser);
+              return done(null, newUser, req.flash('message', "Welcome to Daryl's Palace " + newUser.username));
             });
           }
         });

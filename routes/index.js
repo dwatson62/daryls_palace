@@ -4,7 +4,7 @@ var passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', { message: req.flash('message') } );
 });
 
 router.post('/login', passport.authenticate('login', {
@@ -13,14 +13,9 @@ router.post('/login', passport.authenticate('login', {
   failureFlash : true
 }));
 
-router.get('/signup', function(req, res) {
-  res.render('register');
-});
-
 router.post('/signup', passport.authenticate('signup', {
   successRedirect: '/',
-  failureRedirect: '/signup',
-  failureFlash : true
+  failureRedirect: '/'
 }));
 
 router.get('/signout', function(req, res) {

@@ -9,9 +9,13 @@ module.exports = function(passport) {
     passReqToCallback : true
     },
     function(req, username, password, done) {
+      console.log(req);
+      console.log(username);
+      console.log(password);
       User.findOne({ 'username' : username },
         function(err, user) {
           if (err) {
+            console.log('There was an error apparently');
             return done(err);
           }
           if (!user) {
@@ -24,13 +28,16 @@ module.exports = function(passport) {
             return done(null, false,
               req.flash('message', 'Invalid Password'));
           }
-          return done(null, user);
+          console.log('Login succesful');
+          return done(null, user, req.flash('message', "Welcome back " + username));
         }
       );
+
   }));
 
+
   var isValidPassword = function(user, password) {
-    return bCrypt.compareSync(password, user,password);
+    return bCrypt.compareSync(password, user.password);
   }
 
 }

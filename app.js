@@ -1,8 +1,12 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
+var passport = require('passport');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/darylsPalace', function(err) {
@@ -13,16 +17,11 @@ mongoose.connect('mongodb://localhost/darylsPalace', function(err) {
   }
 });
 
-var app = express();
-
-var passport = require('passport');
-var expressSession = require('express-session');
-// app.use(expressSession({ secret: 'mySecretKey' }));
+app.use(cookieParser());
+app.use(session({ secret: 'mySecretKey' }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
-var flash = require('connect-flash');
-app.use(flash());
 
 var initPassport = require('./passport/init');
 initPassport(passport);
