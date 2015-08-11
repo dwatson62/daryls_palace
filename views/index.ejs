@@ -1,3 +1,19 @@
-Welcome to Daryl's casino
-<a href="/blackjack">Blackjack</a>
-<a href="/roulette">Roulette</a>
+<html ng-app="welcomeMod">
+<head>
+  <title>Daryl's Palace</title>
+  <script src="bower_components/angular/angular.js"></script>
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+  <script src="src/welcome/app.js"></script>
+  <script src="src/welcome/welcomeController.js"></script>
+</head>
+<body ng-controller="welcomeController as wellCtrl">
+  <button type="submit" ng-click="wellCtrl.test()">Test Me</button>
+  Welcome to Daryl's casino
+  <a href="/blackjack">Blackjack</a>
+  <a href="/roulette">Roulette</a>
+  <form ng-submit="wellCtrl.newUser()">
+    <input type="text" ng-model="wellCtrl.name" name="name" placeholder="Enter your name..."/>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

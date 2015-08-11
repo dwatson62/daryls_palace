@@ -15,6 +15,8 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.1",
     "express": "~4.12.4",
+    "mongodb": "^2.0.40",
+    "mongoose": "^4.1.2",
     "morgan": "~1.5.3"
   },
   "devDependencies": {
@@ -26,6 +28,7 @@
     "karma-chrome-launcher": "^0.2.0",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.0",
+    "nodemon": "^1.4.0",
     "phantomjs": "^1.9.17",
     "protractor": "^2.1.0",
     "webdriver-manager": "^7.0.1"
