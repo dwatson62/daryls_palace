@@ -9,9 +9,6 @@ module.exports = function(passport) {
     passReqToCallback : true
     },
     function(req, username, password, done) {
-      console.log(req);
-      console.log(username);
-      console.log(password);
       User.findOne({ 'username' : username },
         function(err, user) {
           if (err) {
