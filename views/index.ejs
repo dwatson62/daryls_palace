@@ -1,3 +1,63 @@
-Welcome to Daryl's casino
-<a href="/blackjack">Blackjack</a>
-<a href="/roulette">Roulette</a>
+<html>
+<head>
+  <title>Daryl's Palace</title>
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+  <link rel='stylesheet' href='/stylesheets/welcome-style.css' />
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="src/welcome/welcome.js"></script>
+</head>
+<header>
+  <% include navbar %>
+</header>
+<body>
+  <center>
+  <br>
+
+  <% if (message) { %>
+    <p class="message"><%= message %></p>
+  <% } %>
+
+  <% if (user) { %>
+    <a href="/blackjack"><img src="/images/blackjack/screenshot.png" height='200'></a>
+    <br>
+    <br>
+    <a href="/roulette"><img src="/images/roulette/screenshot.png" height='200'></a>
+ <% } else { %>
+
+    <div id="register">
+
+      <h1>Welcome to Daryl's Palace</h1>
+
+      <h3>Please sign in here:</h3>
+
+      <form action='/login' method='post'>
+        <b>Username: </b><input type="text" name="username" placeholder="Enter your username..."/>
+        <b>Password: </b><input type="password" name="password" placeholder="Enter your password..."/>
+        <br>
+        <br>
+        <button type="submit">Sign in</button>
+      </form>
+
+      <h3>New user? Register here:</h3>
+      <form action='/signup' method='post'>
+        <b>Username: </b><input type="text" name="username" placeholder="Enter your username..."/>
+        <br>
+        <b>Email: </b><input type="email" name="email" placeholder="Enter your email..."/>
+        <br>
+        <b>Password: </b><input type="password" name="password" placeholder="Enter your password..."/>
+        <br>
+        <b>Password confirmation: </b><input type="password" name="passwordConfirmation" placeholder="Confirm your password..."/>
+        <br>
+        <input id="over-18" type="checkbox"> I am over 18
+        <br>
+        <br>
+        <button id="submit" type="submit">Submit</button>
+      </form>
+
+    </div>
+
+  <% } %>
+
+</center>
+</body>
+</html>

@@ -1,14 +1,33 @@
 var express = require('express');
+var app = express();
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
+var passport = require('passport');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/darylsPalace', function(err) {
+  if(err) {
+    console.log('connection error', err);
+  } else {
+    console.log('connection successful');
+  }
+});
+
+app.use(cookieParser());
+app.use(session({ secret: 'mySecretKey' }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+var initPassport = require('./passport/init');
+initPassport(passport);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
 
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log('Server starting on port 3000');

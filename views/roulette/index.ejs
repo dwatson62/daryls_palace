@@ -11,8 +11,9 @@
     <script src='src/roulette/wheelFactory.js'></script>
     <script src='src/roulette/rouletteController.js'></script>
   </head>
-  <body ng-controller='RouletteController as rltCtrl'><center>
+  <body ng-controller='RouletteController as rltCtrl' ng-init="rltCtrl.initUser('<%= user.id %>', '<%= user.balance %>')"><center>
     <div class="container">
+      <a href="/">Leave Table</a>
       <div class="row">
         <div class="col-md-8">
           <br>

@@ -1,0 +1,38 @@
+body {
+  background-image: url('http://www.webkatalog100.com/wp-content/uploads/2014/11/3.jpg');
+}
+
+.navbar {
+  background-color: #193E3E;
+  font-color: #FAFAFA;
+}
+
+#register {
+  background-color: #193E3E;
+  width: 500px;
+  border: solid black;
+  color: #FAFAFA;
+}
+
+input {
+  border-radius: 10px;
+  color: black;
+}
+
+button {
+  border-radius: 10px;
+  background: #005CE6;
+}
+
+button:disabled {
+    background: #dddddd;
+}
+
+.message {
+  background: #005CE6;
+  font-size: 24px;
+}
+
+#balance {
+  color: black;
+}

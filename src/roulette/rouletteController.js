@@ -1,4 +1,4 @@
-roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$interval', function(PlayerFactory, WheelFactory, $interval) {
+roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$interval', '$http', function(PlayerFactory, WheelFactory, $interval, $http) {
 
   var self = this;
   var player = new PlayerFactory();
@@ -8,13 +8,23 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
   self.bet = [];
   self.inactiveChips = [false, false, false, false]
   self.pastSpins = [];
-  self.playerBalance = player.balance;
   self.previousBet = [];
   self.totalBet = 0;
   self.winnings = 0;
 
   self.timer = 10;
   self.message = 'Place your bets... ' + self.timer;
+
+  self.initUser = function(id, balance) {
+    self.userID = id
+    player.balance = balance;
+    self.playerBalance = player.balance;
+  };
+
+  self.saveBalance = function() {
+    var data = { "balance": player.balance };
+    $http.put('/users/' + self.userID, data);
+  };
 
   $interval(timeChange, 1000)
 
@@ -32,6 +42,7 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
       self.spin();
       self.message = wheel.number + " " + wheel.colour;
       $('#display-msg').fadeTo( "slow", 1);
+      self.saveBalance();
     }
     if (self.timer == -10) {
       self.timer = 10
