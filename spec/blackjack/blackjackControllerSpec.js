@@ -6,6 +6,7 @@ describe('Blackjack Controller', function() {
 
   beforeEach(inject(function($controller, gameFactory) {
     ctrl = $controller('BlackjackController');
+    ctrl.toggleOnePlayerGame();
   }));
 
   describe('Basic moves', function() {
@@ -29,6 +30,7 @@ describe('Blackjack Controller', function() {
 
     it('player can hit', function() {
       ctrl.hit();
+
       expect(ctrl.result).toBeDefined();
     });
 

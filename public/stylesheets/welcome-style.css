@@ -2,6 +2,13 @@ body {
   background-image: url('http://www.webkatalog100.com/wp-content/uploads/2014/11/3.jpg');
 }
 
+.headings {
+  background-color: #193E3E;
+  width: 200px;
+  color: #B8E6E6;
+  border-radius: 10px;
+}
+
 .navbar {
   background-color: #193E3E;
   font-color: #FAFAFA;

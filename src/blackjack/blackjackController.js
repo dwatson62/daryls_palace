@@ -2,12 +2,14 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   var self = this;
   var player = new playerFactory();
+  var computer = new playerFactory();
   var dealer = new playerFactory();
   var game = new gameFactory();
   var hint = new hintFactory();
 
   self.game = game;
   self.cardCountingTotal = 0;
+  self.onePlayerGame = false;
 
   self.initUser = function(id, balance) {
     self.userID = id
@@ -24,23 +26,27 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     // It returns two duplicate value cards for the player
     // So they are able to split on the first game
 
-    // self.gimmeASplit = function() {
-    //   self.clearPreviousRound();
-    //   self.toggleShuffleDeck;
-    //   self.playerTurn = true;
-    //   self.bet(10);
-    //   // dealer gets D3
-    //   dealer.currentCards = [[game.deck[1]]];
-    //   self.dealerCards = dealer.currentCards;
-    //   self.calculateScore(dealer);
-    //   // returns D5 and H5
-    //   player.currentCards = [[game.deck[3], game.deck[16]]];
-    //   self.playerCards = player.currentCards;
-    //   self.calculateScore(player);
-    // };
+    self.gimmeASplit = function() {
+      self.clearPreviousRound();
+      self.toggleShuffleDeck;
+      self.playerTurn = true;
+      self.bet(10);
+      // dealer gets D3
+      dealer.currentCards = [[game.deck[1]]];
+      self.dealerCards = dealer.currentCards;
+      self.calculateScore(dealer);
+      // returns D5 and H5
+      player.currentCards = [[game.deck[3], game.deck[16]]];
+      self.playerCards = player.currentCards;
+      self.calculateScore(player);
+    };
 
   self.toggleShuffleDeck = function() {
     game.canShuffle = false;
+  };
+
+  self.toggleOnePlayerGame = function() {
+    self.onePlayerGame = true;
   };
 
   self.shuffleShoe = function() {
@@ -80,12 +86,17 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.dealerHit();
     self.hit();
     self.hit();
+    if (self.onePlayerGame === false) {
+      self.computerPlayerHit();
+      self.computerPlayerHit();
+    }
   };
 
   self.clearPreviousRound = function() {
     self.dealerTurn = false;
     self.blackjackResult = null;
     player.clearRound();
+    computer.clearRound();
     dealer.clearRound();
     self.result = null;
   };
@@ -93,6 +104,54 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.bet = function(amount) {
     player.bet(amount);
     self.playerBalance = '£' + player.balance;
+  };
+
+  self.computerPlayerTurn = function() {
+    var cards = computer.currentCards[computer.handIndex];
+    var total = game.pointsTotal(cards);
+    if (total == 'Bust') { return self.computerPlayerStand(); }
+    var move = self.computerDecidesMove();
+    console.log(move);
+    if (move === 'Hit') {
+      self.computerPlayerHit();
+    } else if (move === 'Double Down') {
+      return self.computerPlayerDoubleDown();
+    } else if (move === 'Split') {
+      self.computerPlayerSplit();
+    } else if (move === 'Split then Double Down') {
+      self.computerPlayerSplit();
+      self.computerPlayerDoubleDown();
+    } else if (move === 'Stand') {
+      return self.computerPlayerStand();
+    }
+    self.computerPlayerTurn();
+
+  };
+
+  self.computerPlayerStand = function() {
+    self.dealersTurn();
+  };
+
+  self.computerPlayerHit = function() {
+    var card = computer.getCard(game);
+    self.computerCards = computer.currentCards;
+  };
+
+  self.computerPlayerDoubleDown = function() {
+    computer.doubleDown(game);
+    self.computerCards = computer.currentCards;
+    self.computerPlayerStand();
+  };
+
+  self.computerPlayerSplit = function() {
+    self.computerCards = computer.split();
+    // self.computerPlayerHit();
+  };
+
+  self.computerDecidesMove = function() {
+    self.calculateScore(dealer);
+    var cards = self.computerCards[computer.handIndex];
+    return hint.giveHint(cards, self.dealerScore, game);
   };
 
   self.dealerHit = function() {
@@ -124,7 +183,11 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.calculateScore(player);
     if (result === 'done') {
       self.playerTurn = false;
-      self.dealersTurn();
+      if (self.onePlayerGame === false) {
+        self.computerPlayerTurn();
+      } else {
+        self.dealersTurn();
+      }
     }
   };
 
