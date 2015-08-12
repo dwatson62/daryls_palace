@@ -27,6 +27,7 @@ blackjackGame.factory('playerFactory', function() {
 
   Player.prototype.canDouble = function(game) {
     var cards = this.currentCards[this.handIndex];
+    if (cards.length > 2) { return false; }
     if (game.pointsTotal(cards) < 14) { return true; }
     if (cards[0].substring(1) === 'A' || cards[0].substring(1) === 'A') { return true; }
     return false;

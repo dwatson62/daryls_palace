@@ -1,9 +1,20 @@
-<div class="square" id="square1" style="float: left; left: 150px;">
+<div class="square" id="square1" style="float: left;">
+  <div id="player-cards1" ng-repeat="card in bjctrl.computerCards[0] track by $index">
+    <img class='player-cards' id="card{{$index}}" ng-src="/images/blackjack/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
+  </div>
+</div>
+<div class="square" id="square2" style="float: left; left: 50px;">
+  <div id='player-cards2' ng-repeat="card in bjctrl.computerCards[1] track by $index">
+    <img class='player-cards' id="card{{$index}}" ng-src="/images/blackjack/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
+  </div>
+</div>
+
+<div class="square" id="square1" style="float: right; left: 150px;">
   <div id="player-cards1" ng-repeat="card in bjctrl.playerCards[0] track by $index">
     <img class='player-cards' id="card{{$index}}" ng-src="/images/blackjack/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
   </div>
 </div>
-<div class="square" id="square2" style="float: right">
+<div class="square" id="square2" style="float: right; left: 350px;">
   <div id='player-cards2' ng-repeat="card in bjctrl.playerCards[1] track by $index">
     <img class='player-cards' id="card{{$index}}" ng-src="/images/blackjack/cards/{{card}}.png" height='130' style="position: absolute; z-index: {{$index}}; left:{{$index * 30}}px; top:{{$index * 30}}px;">
   </div>

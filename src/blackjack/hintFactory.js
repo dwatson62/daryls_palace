@@ -79,7 +79,7 @@ blackjackGame.factory('hintFactory', function() {
     var line = [];
     this.createLoop(5, 'Stand', line);
     this.createLoop(3, 'Hit', line);
-    line.push('Hit/Surrender');
+    line.push('Hit');
     line.push('Hit');
     this.matrix.push(line);
   };
@@ -88,7 +88,7 @@ blackjackGame.factory('hintFactory', function() {
     var line = [];
     this.createLoop(5, 'Stand', line);
     this.createLoop(2, 'Hit', line);
-    this.createLoop(3, 'Hit/Surrender', line);
+    this.createLoop(3, 'Hit', line);
     this.matrix.push(line);
   };
 
@@ -210,6 +210,7 @@ blackjackGame.factory('hintFactory', function() {
   Hint.prototype.giveHint = function(playerCards, dealerScore, game) {
     var playerScore = game.pointsTotal(playerCards);
     if (playerScore < 9) { return 'Hit'; }
+    if (playerScore > 17) { return 'Stand'; }
     var y = (dealerScore - 2);
     var x;
     if (this.checkForAces(playerCards, game) === true) {

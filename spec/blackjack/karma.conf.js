@@ -18,7 +18,7 @@ module.exports = function(config) {
         'bower_components/angular/angular.js',
         'bower_components/angular-mocks/angular-mocks.js',
         'src/blackjack/*.js',
-        'spec/blackjack/*.js'
+        'spec/blackjack/blackjackControllerSpec.js'
     ],
 
 
@@ -63,6 +63,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   });
 };
