@@ -16,6 +16,7 @@ body {
 
 input {
   border-radius: 10px;
+  color: black;
 }
 
 button {
@@ -30,4 +31,8 @@ button:disabled {
 .message {
   background: #005CE6;
   font-size: 24px;
+}
+
+#balance {
+  color: black;
 }

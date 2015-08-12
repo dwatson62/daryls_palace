@@ -1,4 +1,4 @@
-blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', 'hintFactory', function(gameFactory, playerFactory, hintFactory) {
+blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', 'hintFactory', '$http', function(gameFactory, playerFactory, hintFactory, $http, id) {
 
   var self = this;
   var player = new playerFactory();
@@ -7,8 +7,18 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   var hint = new hintFactory();
 
   self.game = game;
-  self.playerBalance = '£' + player.balance;
   self.cardCountingTotal = 0;
+
+  self.initUser = function(id, balance) {
+    self.userID = id
+    player.balance = balance;
+    self.playerBalance = '£' + player.balance;
+  };
+
+  self.saveBalance = function() {
+    var data = { "balance": player.balance };
+    $http.put('/users/' + self.userID, data);
+  };
 
     // This method is only used for developing the split functionality
     // It returns two duplicate value cards for the player
@@ -164,6 +174,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
         }
       else { self.result = 'You lose'; }
     }
+    self.saveBalance();
     self.shuffleShoe();
   };
 

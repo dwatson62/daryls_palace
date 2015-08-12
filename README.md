@@ -12,6 +12,8 @@ This is a merge between two earlier projects:
 
 Daryl's Palace is a casino currently with two games, Blackjack and Roulette. Specific documentation for each game is available at the above links. In the future I would like to add more games to this list.
 
+Users can register and sign in/out. Player balance starts at £100 and can be used across both games. The balance gets updated with every hand/round played.
+
 ## Installation
 
 From the command line:
@@ -42,7 +44,4 @@ For feature tests, in separate terminal windows
 
 ## Job List
 
-- [ ] Styling main page
-- [ ] Add MongoDB to store player information
-- [ ] Allow player balance to be used across both game
 - [ ] Add test coverage

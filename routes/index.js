@@ -24,11 +24,11 @@ router.get('/signout', function(req, res) {
 });
 
 router.get('/blackjack', function(req, res, next) {
-  res.render('blackjack/index');
+  res.render('blackjack/index', { user: req.user } );
 });
 
 router.get('/roulette', function(req, res, next) {
-  res.render('roulette/index');
+  res.render('roulette/index', { user: req.user } );
 });
 
 module.exports = router;
