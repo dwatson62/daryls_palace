@@ -1,4 +1,4 @@
-blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', 'hintFactory', '$http', function(gameFactory, playerFactory, hintFactory, $http, id) {
+blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory', 'hintFactory', '$http', function(gameFactory, playerFactory, hintFactory, $http) {
 
   var self = this;
   var player = new playerFactory();
