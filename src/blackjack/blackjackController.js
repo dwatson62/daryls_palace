@@ -86,8 +86,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.dealerHit();
     self.hit();
     self.hit();
-    self.computerPlayerHit();
-    self.computerPlayerHit();
+    if (self.onePlayerGame === false) {
+      self.computerPlayerHit();
+      self.computerPlayerHit();
+    }
   };
 
   self.clearPreviousRound = function() {
@@ -181,7 +183,11 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.calculateScore(player);
     if (result === 'done') {
       self.playerTurn = false;
-      self.computerPlayerTurn();
+      if (self.onePlayerGame === false) {
+        self.computerPlayerTurn();
+      } else {
+        self.dealersTurn();
+      }
     }
   };
 

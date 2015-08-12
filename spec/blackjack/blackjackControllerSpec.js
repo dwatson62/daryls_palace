@@ -30,20 +30,21 @@ describe('Blackjack Controller', function() {
 
     it('player can hit', function() {
       ctrl.hit();
+
       expect(ctrl.result).toBeDefined();
     });
 
-    xit('player can stand, to find out the result', function() {
+    it('player can stand, to find out the result', function() {
       ctrl.stand();
       expect(ctrl.result).toBeDefined();
     });
 
-    xit('player can double down and get just 1 more card', function() {
+    it('player can double down and get just 1 more card', function() {
       ctrl.doubleDown();
       expect(ctrl.playerCards[0].length).toEqual(3);
     });
 
-    xit('can start a new round', function() {
+    it('can start a new round', function() {
       ctrl.stand();
       ctrl.startRound(10);
       expect(ctrl.playerCards[0].length).toEqual(2);
@@ -51,7 +52,7 @@ describe('Blackjack Controller', function() {
 
   });
 
-  xdescribe('Winning and losing', function() {
+  describe('Winning and losing', function() {
 
     beforeEach(function() {
       ctrl.toggleShuffleDeck();
@@ -105,7 +106,7 @@ describe('Blackjack Controller', function() {
 
   });
 
-  xdescribe('Splitting', function() {
+  describe('Splitting', function() {
 
     beforeEach(function() {
       // D6
@@ -143,7 +144,7 @@ describe('Blackjack Controller', function() {
 
   });
 
-  xdescribe('Winning and losing split bets', function() {
+  describe('Winning and losing split bets', function() {
 
     setup = function(cards) {
       // Rigs a pack of cards to deal in a particular order
