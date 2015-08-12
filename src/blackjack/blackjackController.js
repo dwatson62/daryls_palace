@@ -26,20 +26,20 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     // It returns two duplicate value cards for the player
     // So they are able to split on the first game
 
-    // self.gimmeASplit = function() {
-    //   self.clearPreviousRound();
-    //   self.toggleShuffleDeck;
-    //   self.playerTurn = true;
-    //   self.bet(10);
-    //   // dealer gets D3
-    //   dealer.currentCards = [[game.deck[1]]];
-    //   self.dealerCards = dealer.currentCards;
-    //   self.calculateScore(dealer);
-    //   // returns D5 and H5
-    //   player.currentCards = [[game.deck[3], game.deck[16]]];
-    //   self.playerCards = player.currentCards;
-    //   self.calculateScore(player);
-    // };
+    self.gimmeASplit = function() {
+      self.clearPreviousRound();
+      self.toggleShuffleDeck;
+      self.playerTurn = true;
+      self.bet(10);
+      // dealer gets D3
+      dealer.currentCards = [[game.deck[1]]];
+      self.dealerCards = dealer.currentCards;
+      self.calculateScore(dealer);
+      // returns D5 and H5
+      player.currentCards = [[game.deck[3], game.deck[16]]];
+      self.playerCards = player.currentCards;
+      self.calculateScore(player);
+    };
 
   self.toggleShuffleDeck = function() {
     game.canShuffle = false;

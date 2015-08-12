@@ -49,3 +49,20 @@ body {
   height: 135px;
   width: 94px;
 };
+
+#player-name {
+  background-color: #193E3E;
+  width: 200px;
+  color: #B8E6E6;
+  border-radius: 10px;
+}
+
+#names {
+  background-color: #00A300;
+  width: 150px;
+  height: 35px;
+  color: #B8E6E6;
+  border-radius: 10px;
+  text-align: center;
+  border: solid black;
+}

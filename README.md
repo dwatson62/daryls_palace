@@ -12,7 +12,9 @@ This is a merge between two earlier projects:
 
 Daryl's Palace is a casino currently with two games, Blackjack and Roulette. Specific documentation for each game is available at the above links. In the future I would like to add more games to this list.
 
-Users can register and sign in/out. Player balance starts at £100 and can be used across both games. The balance gets updated with every hand/round played.
+Users can register and sign in/out. Player balance starts at £100 and can be used across both games. The balance gets updated with every hand/round played. The blackjack game now has a computer playing, who is a serious player and follows basic strategy perfectly.
+
+Unit tests are working correctly. I have not been able to test user logins, and due to each game requiring a login beforehand this means that protractor tests are currently broken.
 
 ## Installation
 
@@ -32,8 +34,6 @@ For feature tests, in separate terminal windows
 
 - ``` npm start ```
 - ``` webdriver-manager update ``` then ``` webdriver-manager start ```
-- ``` protractor spec/blackjack/e2e/conf.js ``` to test Blackjack
-- ``` protractor spec/roulette/e2e/conf.js ``` to test Roulette
 
 ## Technologies Used
 
@@ -45,3 +45,5 @@ For feature tests, in separate terminal windows
 ## Job List
 
 - [ ] Add test coverage
+- [ ] Test user logins
+- [ ] Fix protractor tests
