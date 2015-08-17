@@ -6,7 +6,7 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
 
   self.amountBet = 0;
   self.bet = [];
-  self.inactiveChips = [false, false, false, false]
+  self.inactiveChips = [false, false, false, false];
   self.pastSpins = [];
   self.previousBet = [];
   self.totalBet = 0;
@@ -16,7 +16,7 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
   self.message = 'Place your bets... ' + self.timer;
 
   self.initUser = function(id, balance) {
-    self.userID = id
+    self.userID = id;
     player.balance = balance;
     self.playerBalance = player.balance;
   };
@@ -26,13 +26,13 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
     $http.put('/users/' + self.userID, data);
   };
 
-  $interval(timeChange, 1000)
+  $interval(timeChange, 1000);
 
   function timeChange() {
     self.timer --;
     if (self.timer > 0) { self.message = 'Place your bets... ' + self.timer; }
-    if (self.timer == 0) {
-      self.message = 'No more bets please'
+    if (self.timer === 0) {
+      self.message = 'No more bets please';
       self.chipButtons(true);
     }
 
@@ -45,16 +45,16 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
       self.saveBalance();
     }
     if (self.timer == -10) {
-      self.timer = 10
-      self.message = 'Place your bets... ' + self.timer
+      self.timer = 10;
+      self.message = 'Place your bets... ' + self.timer;
       self.chipButtons(false);
     }
-  };
+  }
 
   self.hideTimer = function() {
     if (self.timer < 1) { return true; }
     return false;
-  }
+  };
 
   self.blackOrRedBtn = function(number, line) {
     var redNumbers = [[3, 9, 12, 18, 21, 27, 30, 36], [5, 14, 23, 32], [1, 7, 16, 19, 25, 34]];
@@ -65,8 +65,8 @@ roulette.controller('RouletteController', ['PlayerFactory', 'WheelFactory', '$in
   };
 
   self.chipButtons = function(booleanValue) {
-    for (x in self.inactiveChips) { self.inactiveChips[x] = booleanValue; }
-  }
+    for (var x in self.inactiveChips) { self.inactiveChips[x] = booleanValue; }
+  };
 
   self.disableButton = function() {
     if (self.timer < 0) { return true; }

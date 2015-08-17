@@ -1,6 +1,6 @@
 roulette.factory('WheelFactory', function() {
 
-  var Wheel = function() {}
+  var Wheel = function() {};
 
   Wheel.prototype.spin = function() {
   	this.number = Math.floor(Math.random() * 37);

@@ -1,2 +1,2 @@
 var roulette = angular
-  .module('Roulette', [])
+  .module('Roulette', []);

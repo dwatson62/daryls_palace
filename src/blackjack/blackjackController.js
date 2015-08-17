@@ -12,7 +12,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
   self.onePlayerGame = false;
 
   self.initUser = function(id, balance) {
-    self.userID = id
+    self.userID = id;
     player.balance = balance;
     self.playerBalance = '£' + player.balance;
   };
@@ -28,7 +28,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
     self.gimmeASplit = function() {
       self.clearPreviousRound();
-      self.toggleShuffleDeck;
+      self.toggleShuffleDeck();
       self.playerTurn = true;
       self.bet(10);
       // dealer gets D3
@@ -39,6 +39,10 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
       player.currentCards = [[game.deck[3], game.deck[16]]];
       self.playerCards = player.currentCards;
       self.calculateScore(player);
+      if (self.onePlayerGame === false) {
+        self.computerPlayerHit();
+        self.computerPlayerHit();
+      }
     };
 
   self.toggleShuffleDeck = function() {
@@ -145,7 +149,6 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
 
   self.computerPlayerSplit = function() {
     self.computerCards = computer.split();
-    // self.computerPlayerHit();
   };
 
   self.computerDecidesMove = function() {
@@ -204,7 +207,6 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     self.displayHint = null;
     self.playerCards = player.split();
     self.playerBalance = '£' + player.balance;
-    self.hit();
   };
 
   self.calculateScore = function(user) {

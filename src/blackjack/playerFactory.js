@@ -56,10 +56,9 @@ blackjackGame.factory('playerFactory', function() {
   };
 
   Player.prototype.stand = function(game) {
-    // moves to that players next hand, and hits automatically
+    // moves to that players next hand
     if (this.handIndex != this.currentCards.length - 1) {
       this.handIndex += 1;
-      this.getCard(game);
     } else { return 'done'; }
   };
 

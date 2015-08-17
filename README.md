@@ -10,7 +10,12 @@ This is a merge between two earlier projects:
 [(https://github.com/dwatson62/blackjack)](https://github.com/dwatson62/blackjack)
 [(https://github.com/dwatson62/roulette)](https://github.com/dwatson62/roulette)
 
-Daryl's Palace is a casino currently with two games, Blackjack and Roulette. Specific documentation for each game is available at the above links. In the future I would like to add more games to this list.
+Daryl's Palace is a casino currently with the following games:
+
+- Blackjack [(https://github.com/dwatson62/daryls_palace/blackjackREADME.md)](https://github.com/dwatson62/daryls_palace/blackjackREADME.md)
+- Roulette [(https://github.com/dwatson62/daryls_palace/rouletteREADME.md)](https://github.com/dwatson62/daryls_palace/rouletteREADME.md)
+
+In the future I would like to add more games to this list. Perhaps pontoon or slot machines. Maybe I'll add in a bar like with PKR.
 
 Users can register and sign in/out. Player balance starts at £100 and can be used across both games. The balance gets updated with every hand/round played. The blackjack game now has a computer playing, who is a serious player and follows basic strategy perfectly.
 
