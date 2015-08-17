@@ -12,8 +12,8 @@ This is a merge between two earlier projects:
 
 Daryl's Palace is a casino currently with the following games:
 
-- Blackjack [(https://github.com/dwatson62/daryls_palace/blackjackREADME.md)](https://github.com/dwatson62/daryls_palace/blackjackREADME.md)
-- Roulette [(https://github.com/dwatson62/daryls_palace/rouletteREADME.md)](https://github.com/dwatson62/daryls_palace/rouletteREADME.md)
+- Blackjack [(https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)](https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)
+- Roulette [(https://github.com/dwatson62/daryls_palace/blob/master/rouletteREADME.md)](https://github.com/dwatson62/daryls_palace/blob/master/rouletteREADME.md)
 
 In the future I would like to add more games to this list. Perhaps pontoon or slot machines. Maybe I'll add in a bar like with PKR.
 
