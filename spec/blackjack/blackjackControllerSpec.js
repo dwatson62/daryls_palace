@@ -125,21 +125,17 @@ describe('Blackjack Controller', function() {
       expect(ctrl.playerBalance).toEqual('£80');
     });
 
-    it('player automatically gets an extra card on first split card', function() {
-      ctrl.split();
-      expect(ctrl.playerCards[0].length).toEqual(2);
-    });
-
     it('player can hit on first split card', function() {
       ctrl.split();
       ctrl.hit();
-      expect(ctrl.playerCards).toEqual([['D6', 'D6', 'D6'],['D6']]);
+      expect(ctrl.playerCards).toEqual([['D6', 'D6'],['D6']]);
     });
 
-    it('player can stand on first split card, and automatically hits on second split card', function() {
+    it('player can stand on first split card, and hit on second split card', function() {
       ctrl.split();
       ctrl.stand();
-      expect(ctrl.playerCards).toEqual([['D6', 'D6'],['D6', 'D6']]);
+      ctrl.hit();
+      expect(ctrl.playerCards).toEqual([['D6'],['D6', 'D6']]);
     });
 
   });
@@ -160,7 +156,9 @@ describe('Blackjack Controller', function() {
       setup(cards);
       ctrl.split();
       ctrl.hit();
+      ctrl.hit();
       ctrl.stand();
+      ctrl.hit();
       ctrl.hit();
       ctrl.stand();
       // Dealer gets 17
@@ -185,6 +183,7 @@ describe('Blackjack Controller', function() {
       setup(cards);
       ctrl.split();
       ctrl.hit();
+      ctrl.hit();
       ctrl.stand();
       ctrl.stand();
       // Dealer gets 17
@@ -198,6 +197,7 @@ describe('Blackjack Controller', function() {
       ctrl.split();
       ctrl.stand();
       ctrl.hit();
+      ctrl.hit();
       ctrl.stand();
       // Dealer gets 17
       // Player gets 16 and 19
@@ -209,7 +209,9 @@ describe('Blackjack Controller', function() {
       setup(cards);
       ctrl.split();
       ctrl.hit();
+      ctrl.hit();
       ctrl.stand();
+      ctrl.hit();
       ctrl.hit();
       ctrl.stand();
       // Dealer gets 17

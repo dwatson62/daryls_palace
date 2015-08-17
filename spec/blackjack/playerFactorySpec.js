@@ -72,15 +72,15 @@ describe('Player Factory', function() {
       expect(player.canSplit()).toEqual(true);
     });
 
+    it('can split and get an extra hand', function() {
+      player.split();
+      expect(player.currentCards).toEqual([['D8'], ['D8']]);
+    });
+
     it('cannot split more than once', function() {
       player.split();
       player.getCard(game);
       expect(player.canSplit()).toEqual(false);
-    });
-
-    it('can split and get an extra card', function() {
-      player.split();
-      expect(player.currentCards).toEqual([['D8'], ['D8']]);
     });
 
     it('can hit on a split', function() {
@@ -96,19 +96,12 @@ describe('Player Factory', function() {
       expect(game.pointsTotal(player.currentCards[0])).toEqual(16);
     });
 
-    it('when stands on a first split card, automatically hit on the next', function() {
+    it('when stands on a first split card, can hit on the next', function() {
       player.split();
       player.getCard(game);
       player.stand(game);
+      player.getCard(game);
       expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8']]);
-    });
-
-    it('can stand on a split and hit on the next split card', function() {
-      player.split();
-      player.getCard(game);
-      player.stand(game);
-      player.getCard(game);
-      expect(player.currentCards).toEqual([['D8', 'D8'], ['D8', 'D8', 'D8']]);
     });
 
   });
