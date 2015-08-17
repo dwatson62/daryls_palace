@@ -10,6 +10,8 @@ This is a merge between two earlier projects:
 [(https://github.com/dwatson62/blackjack)](https://github.com/dwatson62/blackjack)
 [(https://github.com/dwatson62/roulette)](https://github.com/dwatson62/roulette)
 
+Available on Heroku: [(https://daryls-palace.herokuapp.com/)](https://daryls-palace.herokuapp.com/) although it is rather slow.
+
 Daryl's Palace is a casino currently with the following games:
 
 - Blackjack [(https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)](https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)
