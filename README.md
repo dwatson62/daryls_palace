@@ -37,11 +37,6 @@ For unit tests:
 
 - ``` npm test ```
 
-For feature tests, in separate terminal windows
-
-- ``` npm start ```
-- ``` webdriver-manager update ``` then ``` webdriver-manager start ```
-
 ## Technologies Used
 
 - Javascript
