@@ -9,7 +9,11 @@ var flash = require('connect-flash');
 var passport = require('passport');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/darylsPalace', function(err) {
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/darylsPalace';
+
+mongoose.connect(mongoUri, function(err) {
   if(err) {
     console.log('connection error', err);
   } else {
