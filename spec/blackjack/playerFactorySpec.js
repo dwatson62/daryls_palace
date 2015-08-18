@@ -49,7 +49,7 @@ describe('Player Factory', function() {
   it('when player gets a blackjack they win 2.5x their stake', function() {
     player.bet(10);
     game.blackjack(player);
-    expect(player.balance).toEqual(125);
+    expect(player.balance).toEqual(115);
   });
 
   it('can double down below 14 and get 1 more card', function() {

@@ -65,7 +65,7 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     var value = game.cardValue(card);
     if (value <= 6) { self.cardCountingTotal += 1; }
     if (value >= 10) { self.cardCountingTotal -= 1; }
-    console.log(self.cardCountingTotal);
+    // console.log(self.cardCountingTotal);
   };
 
   self.showDoubleDownButton = function() {
@@ -217,22 +217,22 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     } else if (user === dealer) {
       self.dealerScore = total;
     }
-    if (total === 21 && user.currentCards[user.handIndex].length === 2) {
-      self.blackjacks();
-    }
   };
 
-  self.blackjacks = function() {
-    self.blackjackResult = 'Blackjack!';
+  self.blackjack = function() {
     var winnings = game.blackjack(player);
     self.playerBalance = '£' + player.balance;
-    self.result = 'Player wins £' + winnings;
+    self.result = 'Blackjack! Player wins £' + winnings;
   };
 
   self.determineWinner = function() {
     for (var x in player.currentCards) {
-      var total = game.pointsTotal(player.currentCards[x]);
-      if ( self.dealerScore === total) { self.isADraw(); }
+      var cards = player.currentCards[x];
+      var total = game.pointsTotal(cards);
+      if (self.calculateBlackjackVictory(cards) === true) {
+        self.blackjack();
+      }
+      else if (self.dealerScore === total) { self.isADraw(); }
       else if (total > self.dealerScore ||
         (self.dealerScore === 'Bust' && total != 'Bust')) {
           self.playerWins();
@@ -241,6 +241,26 @@ blackjackGame.controller('BlackjackController', ['gameFactory', 'playerFactory',
     }
     self.saveBalance();
     self.shuffleShoe();
+  };
+
+  self.calculateBlackjackVictory = function(cards) {
+    // this checks if only the player has a blackjack,
+    // because it's a draw if player and dealer both score a blackjack
+    var playerResult = self.calculateBlackjack(cards);
+    var dealerResult = self.calculateBlackjack(self.dealerCards[0]);
+    if (playerResult !== dealerResult) {
+      return true;
+    }
+    return false;
+  };
+
+  self.calculateBlackjack = function(cards) {
+    // it is a blackjack if 21 is scored with 2 cards
+    var total = game.pointsTotal(cards);
+    if (total === 21 && cards.length === 2) {
+      return true;
+    }
+    return false;
   };
 
   self.isADraw = function() {

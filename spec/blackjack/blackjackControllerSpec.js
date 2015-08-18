@@ -30,7 +30,6 @@ describe('Blackjack Controller', function() {
 
     it('player can hit', function() {
       ctrl.hit();
-
       expect(ctrl.result).toBeDefined();
     });
 
@@ -103,6 +102,35 @@ describe('Blackjack Controller', function() {
       expect(ctrl.playerBalance).toEqual('£120');
     });
 
+    it('player wins 2.5x their stake with a blackjack', function() {
+      var cards = ['D6', 'DA', 'DK', 'D5', 'D5', 'D6'];
+      spyOn(ctrl.game, 'dealOne').and.callFake(function() {
+        return cards.splice(0, 1).join();
+      });
+      ctrl.startRound(10);
+      expect(ctrl.result).toEqual('Blackjack! Player wins £25');
+      expect(ctrl.playerBalance).toEqual('£115');
+    });
+
+    it('player draws with dealer when both get blackjack', function() {
+      var cards = ['SJ', 'DA', 'DK', 'SA'];
+      spyOn(ctrl.game, 'dealOne').and.callFake(function() {
+        return cards.splice(0, 1).join();
+      });
+      ctrl.startRound(10);
+      expect(ctrl.result).toEqual('Draw');
+      expect(ctrl.playerBalance).toEqual('£100');
+    });
+
+    it('player blackjack beats dealer 21', function() {
+      var cards = ['SJ', 'DA', 'DK', 'S5', 'S6'];
+      spyOn(ctrl.game, 'dealOne').and.callFake(function() {
+        return cards.splice(0, 1).join();
+      });
+      ctrl.startRound(10);
+      expect(ctrl.result).toEqual('Blackjack! Player wins £25');
+      expect(ctrl.playerBalance).toEqual('£115');
+    });
 
   });
 
