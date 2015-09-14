@@ -18,12 +18,11 @@ router.get('/', function(req, res, next) {
 router.post('/login', passport.authenticate('login', {
   successRedirect: '/',
   failureRedirect: '/',
-  failureFlash : true
 }));
 
 router.post('/signup', passport.authenticate('signup', {
   successRedirect: '/',
-  failureRedirect: '/'
+  failureRedirect: '/',
 }));
 
 router.get('/signout', function(req, res) {

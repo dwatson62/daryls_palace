@@ -5,41 +5,31 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport){
 
   passport.use('signup', new LocalStrategy({
-    passReqToCallback : true // allows us to pass back the entire request to the callback
+    passReqToCallback : true
     },
 
     function(req, username, password, done) {
-
-      if (req.body.password !== req.body.passwordConfirmation) {
+      if (req.param('email').length === 0) {
+        return done(null, false, req.flash('message','Please fill in all fields'));
+      } else if (req.body.password !== req.body.passwordConfirmation) {
         console.log('Passwords do not match');
         return done(null, false, req.flash('message', 'Passwords do not match'));
       }
 
       findOrCreateUser = function(){
-        // find a user in Mongo with provided username
         User.findOne({ 'username' :  username }, function(err, user) {
-            // In case of any error, return using the done method
           if (err){
             console.log('Error in SignUp: ' + err);
-            return done(err);
+            return done(null, false, req.flash('message','There was an error, please try again.'));
           }
-          // already exists
           if (user) {
             console.log('User already exists with username: ' + username);
             return done(null, false, req.flash('message','User Already Exists'));
           } else {
-            // if there is no user with that email
-            // create the user
             var newUser = new User();
-
-            // set the user's local credentials
             newUser.username = username;
             newUser.password = createHash(password);
             newUser.email = req.param('email');
-            // newUser.firstName = req.param('firstName');
-            // newUser.lastName = req.param('lastName');
-
-            // save the user
             newUser.save(function(err) {
               if (err){
                 console.log('Error in Saving user: ' + err);
@@ -51,8 +41,6 @@ module.exports = function(passport){
           }
         });
       };
-      // Delay the execution of findOrCreateUser and execute the method
-      // in the next tick of the event loop
       process.nextTick(findOrCreateUser);
     })
   );

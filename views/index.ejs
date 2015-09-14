@@ -4,6 +4,7 @@
   <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
   <link rel='stylesheet' href='/stylesheets/welcome-style.css' />
   <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js'></script>
   <script src="src/welcome/welcome.js"></script>
 </head>
 <header>
@@ -33,27 +34,19 @@
       <h3>Please sign in here:</h3>
 
       <form action='/login' method='post'>
-        <b>Username: </b><input type="text" name="username" placeholder="Enter your username..."/>
-        <b>Password: </b><input type="password" name="password" placeholder="Enter your password..."/>
-        <br>
-        <br>
+        <p><input type="text" size='35' name="username" placeholder="Enter your username..."/></p>
+        <p><input type="password" size='35' name="password" placeholder="Enter your password..."/></p>
         <button type="submit">Sign in</button>
       </form>
 
       <h3>New user? Register here:</h3>
-      <form action='/signup' method='post'>
-        <b>Username: </b><input type="text" name="username" placeholder="Enter your username..."/>
-        <br>
-        <b>Email: </b><input type="email" name="email" placeholder="Enter your email..."/>
-        <br>
-        <b>Password: </b><input type="password" name="password" placeholder="Enter your password..."/>
-        <br>
-        <b>Password confirmation: </b><input type="password" name="passwordConfirmation" placeholder="Confirm your password..."/>
-        <br>
-        <input id="over-18" type="checkbox"> I am over 18
-        <br>
-        <br>
-        <button id="submit" type="submit">Submit</button>
+      <form action='/signup' method='post' id='signup'>
+        <p><input type="text" size='35' name="username" placeholder="Enter your username..."/></p>
+        <p><input type="email" size='35' name="email" placeholder="Enter your email..."/></p>
+        <p><input type="password" size='35' name="password" placeholder="Enter your password..."/></p>
+        <p><input type="password" size='35' name="passwordConfirmation" placeholder="Confirm your password..."/></p>
+        <p><input id='over18' name="over18" type="checkbox"> I am over 18</p>
+        <p><button id="submit" disabled type="submit">Submit</button></p>
       </form>
 
     </div>
