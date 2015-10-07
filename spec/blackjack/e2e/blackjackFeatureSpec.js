@@ -1,5 +1,4 @@
 beforeEach(function(){
-  console.log('running the tests');
   browser.get('http://localhost:3000/blackjack');
 });
 
@@ -37,7 +36,7 @@ describe('Blackjack', function() {
 
   it('player gets two cards at the start of the game', function() {
     bet10.click();
-    var playerCards = element.all(by.css('.player-cards')).count();
+    var playerCards = element.all(by.css('.player-cards.player')).count();
     expect(playerCards).toEqual(2);
   });
 

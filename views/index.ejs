@@ -20,7 +20,7 @@
 
   <% if (user) { %>
     <h3 class='headings'>Blackjack</h3>
-    <a href="/blackjack"><img src="/images/blackjack/screenshot.png" height='200'></a>
+    <a href="/blackjack"><img id='blackjack-game' src="/images/blackjack/screenshot.png" height='200'></a>
     <br>
     <br>
     <h3 class='headings'>Roulette</h3>
@@ -34,9 +34,9 @@
       <h3>Please sign in here:</h3>
 
       <form action='/login' method='post'>
-        <p><input type="text" size='35' name="username" placeholder="Enter your username..."/></p>
-        <p><input type="password" size='35' name="password" placeholder="Enter your password..."/></p>
-        <button type="submit">Sign in</button>
+        <p><input type="text" size='35' id='username-login' name="username" placeholder="Enter your username..."/></p>
+        <p><input type="password" size='35' id='password-login' name="password" placeholder="Enter your password..."/></p>
+        <button id='submit-login' type="submit">Sign in</button>
       </form>
 
       <h3>New user? Register here:</h3>

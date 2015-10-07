@@ -13,6 +13,7 @@ var redBtn = element(by.id('red-btn'));
 
 beforeEach(function(){
   browser.get('http://localhost:3000/roulette');
+  browser.sleep(500);
 });
 
 describe('Betting', function() {

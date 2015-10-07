@@ -10,6 +10,7 @@ var winnings = element(by.id('winnings'));
 
 beforeEach(function(){
   browser.get('http://localhost:3000/roulette');
+  browser.sleep(500);
 });
 
 describe('Roulette table', function() {
@@ -19,8 +20,8 @@ describe('Roulette table', function() {
   });
 
   it('Displays where the player can bet or not', function() {
-    expect(message.getText()).toEqual('Place your bets... 10')
-  })
+    expect(message.getText()).toEqual('Place your bets... 10');
+  });
 
   xit('The wheel spins even without placing a bet', function() {
     pastSpins.then(function(result) {
