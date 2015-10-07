@@ -1,6 +1,3 @@
-beforeEach(function(){
-  browser.get('http://localhost:3000/blackjack');
-});
 
 var bet10 = element(by.id('bet10-btn'));
 var hitbtn = element(by.id('hit-btn'));
@@ -11,6 +8,10 @@ var result = element(by.id('result'));
 var balance = element(by.id('player-balance'));
 
 describe('Blackjack', function() {
+
+  beforeEach(function(){
+    browser.get('http://localhost:3000/blackjack');
+  });
 
   it('has a title', function() {
     expect(browser.getTitle()).toEqual('Blackjack');

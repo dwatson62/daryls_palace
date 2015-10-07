@@ -11,14 +11,29 @@ var playerBalance = element(by.id('player-balance'));
 var playerBet = element.all(by.repeater('bets in rltCtrl.bet'));
 var redBtn = element(by.id('red-btn'));
 
-beforeEach(function(){
-  browser.get('http://localhost:3000/roulette');
-  browser.sleep(500);
+describe('Player cannot', function() {
+
+  beforeEach(function(){
+    browser.get('http://localhost:3000/roulette');
+  });
+
+  it('Confirm a bet until money has been put down', function() {
+    expect(numberBtn.isEnabled()).toBe(false);
+    expect(redBtn.isEnabled()).toBe(false);
+    expect(oddBtn.isEnabled()).toBe(false);
+    expect(columnBtn.isEnabled()).toBe(false);
+  });
+
+  xit('Bet more money than they have', function() {
+    expect(betBtn.isEnabled()).toBe(false);
+  });
+
 });
 
 describe('Betting', function() {
 
-  beforeEach(function () {
+  beforeEach(function(){
+    browser.get('http://localhost:3000/roulette');
     betBtn.click();
   });
 
@@ -68,29 +83,14 @@ describe('Betting', function() {
     expect(amountBet.getText()).toEqual('Total bet: £0');
   });
 
-});
+  describe('Player balance', function() {
 
-describe('Player balance', function() {
+    it('is deducted for each bet', function() {
+      betBtn.click();
+      numberBtn.click();
+      expect(playerBalance.getText()).toEqual('Your balance: £99');
+    });
 
-  it('is deducted for each bet', function() {
-    betBtn.click();
-    numberBtn.click();
-    expect(playerBalance.getText()).toEqual('Your balance: £99');
-  });
-
-});
-
-describe('Player cannot', function() {
-
-  it('Confirm a bet until money has been put down', function() {
-    expect(numberBtn.isEnabled()).toBe(false);
-    expect(redBtn.isEnabled()).toBe(false);
-    expect(oddBtn.isEnabled()).toBe(false);
-    expect(columnBtn.isEnabled()).toBe(false);
-  });
-
-  xit('Bet more money than they have', function() {
-    expect(betBtn.isEnabled()).toBe(false);
   });
 
 });

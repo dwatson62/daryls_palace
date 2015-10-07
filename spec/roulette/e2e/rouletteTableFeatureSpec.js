@@ -8,12 +8,12 @@ var repeatBtn = element(by.id('repeat-btn'));
 var message = element(by.id('display-msg'));
 var winnings = element(by.id('winnings'));
 
-beforeEach(function(){
-  browser.get('http://localhost:3000/roulette');
-  browser.sleep(500);
-});
 
 describe('Roulette table', function() {
+
+  beforeEach(function(){
+    browser.get('http://localhost:3000/roulette');
+  });
 
   it('Has a title', function() {
     expect(browser.getTitle()).toEqual('Roulette');

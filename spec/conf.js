@@ -3,9 +3,9 @@ exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
   specs: [
-    // 'welcome/e2e/*.js',
+    'welcome/e2e/*.js',
     'blackjack/e2e/*.js',
-    // 'roulette/e2e/*.js'
+    'roulette/e2e/*.js'
   ],
 
   capabilites: {

@@ -21,8 +21,6 @@ In the future I would like to add more games to this list. Perhaps pontoon or sl
 
 Users can register and sign in/out. Player balance starts at £100 and can be used across both games. The balance gets updated with every hand/round played. The blackjack game now has a computer playing, who is a serious player and follows basic strategy perfectly.
 
-Unit tests are working correctly. I have not been able to test user logins, and due to each game requiring a login beforehand this means that protractor tests are currently broken.
-
 ## Installation
 
 From the command line:
