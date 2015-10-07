@@ -1,4 +1,5 @@
 beforeEach(function(){
+  console.log('running the tests');
   browser.get('http://localhost:3000/blackjack');
 });
 
