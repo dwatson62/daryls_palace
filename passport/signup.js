@@ -9,9 +9,7 @@ module.exports = function(passport){
     },
 
     function(req, username, password, done) {
-      if (req.param('email').length === 0) {
-        return done(null, false, req.flash('message','Please fill in all fields'));
-      } else if (req.body.password !== req.body.passwordConfirmation) {
+      if (req.body.password !== req.body.passwordConfirmation) {
         console.log('Passwords do not match');
         return done(null, false, req.flash('message', 'Passwords do not match'));
       }
