@@ -24,6 +24,6 @@ $(document).ready(function() {
 
   function checkForm() {
     $("#submit").prop("disabled", !($('#signup').valid()));
-  };
+  }
 
 });
