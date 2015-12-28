@@ -14,7 +14,7 @@ exports.config = {
 
   onPrepare: function() {
     browser.driver.get('http://localhost:3000/');
-    browser.driver.findElement(by.id('username-login')).sendKeys('bob');
+    browser.driver.findElement(by.id('username-login')).sendKeys('testUser');
     browser.driver.findElement(by.id('password-login')).sendKeys('123');
     browser.driver.findElement(by.id('submit-login')).click();
     return browser.driver.wait(function() {

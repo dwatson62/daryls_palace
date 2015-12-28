@@ -6,7 +6,8 @@
     "postinstall": "bower install",
     "prestart": "npm install",
     "start": "node app.js",
-    "test": "karma start ./spec/karma.conf.js"
+    "test": "karma start ./spec/karma.conf.js",
+    "protractor": "protractor spec/conf.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

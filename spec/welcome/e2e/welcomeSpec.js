@@ -6,7 +6,7 @@ describe('login', function() {
   });
 
   it('should login', function() {
-    browser.driver.findElement(by.id('username-login')).sendKeys('bob');
+    browser.driver.findElement(by.id('username-login')).sendKeys('testUser');
     browser.driver.findElement(by.id('password-login')).sendKeys('123');
     browser.driver.findElement(by.id('submit-login')).click();
     var game = browser.driver.findElement(by.id('blackjack-game'));

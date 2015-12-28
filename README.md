@@ -7,15 +7,15 @@ Daryl's Palace
 
 This is a merge between two earlier projects:
 
-[(https://github.com/dwatson62/blackjack)](https://github.com/dwatson62/blackjack)
-[(https://github.com/dwatson62/roulette)](https://github.com/dwatson62/roulette)
+[Blackjack](https://github.com/dwatson62/blackjack)
+[Roulette](https://github.com/dwatson62/roulette)
 
-Available on Heroku: [(https://daryls-palace.herokuapp.com/)](https://daryls-palace.herokuapp.com/) although it is rather slow.
+Available on Heroku: [Daryl's Palace](https://daryls-palace.herokuapp.com/) although it is rather slow.
 
 Daryl's Palace is a casino currently with the following games:
 
-- Blackjack [(https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)](https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)
-- Roulette [(https://github.com/dwatson62/daryls_palace/blob/master/rouletteREADME.md)](https://github.com/dwatson62/daryls_palace/blob/master/rouletteREADME.md)
+- Blackjack [README](https://github.com/dwatson62/daryls_palace/blob/master/blackjackREADME.md)
+- Roulette [README](https://github.com/dwatson62/daryls_palace/blob/master/rouletteREADME.md)
 
 In the future I would like to add more games to this list. Perhaps pontoon or slot machines. Maybe I'll add in a bar like with PKR.
 
@@ -24,6 +24,8 @@ Users can register and sign in/out. Player balance starts at £100 and can be us
 ## Installation
 
 From the command line:
+
+This program requires MongoDB for the database. User data will automatically be stored in the 'darylsPalace' database.
 
 - ``` git clone https://github.com/dwatson62/daryls_palace ```
 - ``` npm start ``` (this will download all npm and bower packages, and launch the server)
@@ -35,15 +37,19 @@ For unit tests:
 
 - ``` npm test ```
 
+For protractor tests, in separate terminal tabs:
+
+- ``` npm start ```
+- ``` webdriver-manager update ``` ``` webdriver-manager start ```
+- ``` npm run protractor ```
+
 ## Technologies Used
 
-- Javascript
-- Angular
-- Express
-- Jasmine, Karma
+- Node JS
+- Angular, jQuery
+- Express, MongoDB, Mongoose
+- Jasmine, Karma, Protractor, Grunt, Travis CI
 
 ## Job List
 
 - [ ] Add test coverage
-- [ ] Test user logins
-- [ ] Fix protractor tests
